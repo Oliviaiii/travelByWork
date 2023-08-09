@@ -51,4 +51,9 @@ public class testController {
 	public String forgetPassword() {
 		return "forgetPassword";
 	}
+	
+	@RequestMapping("/helperAccount")
+	public String helperAccount() {
+		return "helperAccount";
+	}
 }

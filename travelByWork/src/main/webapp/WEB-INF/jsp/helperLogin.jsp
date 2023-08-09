@@ -1,25 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<!--
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>小幫手登入</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<head>
+    <title>打工換宿趣 - 小幫手登入</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+   <style>
+    /* Center the form vertically and horizontally */
+    #banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust this value for desired vertical alignment */
+    }
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+    /* Adjust the width of the input fields */
+    #account, #password {
+        width: 450px; /* Change this value as needed */
+    }
+</style>
 
-				<!-- Header -->
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
 					<header id="header" class="alt">
 						<h1><a href="homePage">打工換宿趣</a></h1>
 						<nav id="nav">
@@ -43,72 +49,36 @@
 							</ul>
 						</nav>
 					</header>
+        <section id="banner">
+            <div class="inner">
+                <h2>打工換宿趣 - 小幫手登入</h2>
+                <!-- Login Form -->
+                <form action="helperAccount" method="post">
+                   
+                    <input type="text" id="account" name="account" placeholder="帳號" required><br>
 
-				<!-- Main -->
-					<article id="main">
-						<header>
-							<h2>小幫手登入</h2>
-							<p>快來加入我們！</p>
-						</header>
-						<section class="wrapper style5">
-							<div class="inner">
-									
-									<div class="row">
-										<div class="col-6 col-12-medium">
-											
-										
-								<section>
-									<h4>輸入帳號密碼</h4>
-									
-									<form method="post" action="#">
-										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall">
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="帳號" />
-											</div>
-											<div class="col-6 col-12-xsmall">
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="密碼" />
-											</div>
-									
-									
-									<ul class="actions">
-										<li><a href="homePage" class="button large">登入（跳轉首頁）</a></li>
-									</ul>
-									
-									<ul class="actions fit">
-										<li><a href="helperSignUp" class="button primary fit">註冊成為小幫手</a></li>
-									</ul>
-									
-									<ul class="actions fit">
-										<li><a href="forgetPassword" class="button primary fit">忘記密碼</a></li>
-									</ul>
-									
-								
-					</article>
+                    
+                    <input type="password" id="password" name="password" placeholder="密碼" required><br>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<ul class="copyright">
-							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</footer>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+                    <input type="submit" value="登入" style="font-size: 14px;">
+                </form>
+                
+                <p><a href="forgetPassword">忘記密碼？</a></p>
+                <br>
+                <p><a href="helperSignUp">加入成為小幫手</a></p>
+            </div>
+        </section>
+        <!-- ... Rest of the content ... -->
+        <footer id="footer">
+            <!-- ... Footer content ... -->
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
