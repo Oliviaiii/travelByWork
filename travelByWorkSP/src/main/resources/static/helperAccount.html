@@ -36,8 +36,7 @@
 								</header>
 								<a href="#work" class="jumplink pic">
 									<span class="arrow icon solid fa-chevron-right"><span>查看履歷</span></span>
-									<img src="images1/me.jpg" alt="" />
-								</a>
+								<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" />
 								
 							</article>
 
@@ -126,27 +125,171 @@
 								<header>
 									<h2>心得分享</h2>
 								</header>
+
 								<form action="#" method="post">
+
 									<div>
 										<div class="row">
+
 											<div class="col-6 col-12-medium">
-												<input type="text" name="username" placeholder="暱稱" />
+												<input type="text" name="username" placeholder="暱稱" readonly/>
 											</div>
+
 											<div class="col-6 col-12-medium">
-												<input type="text" name="storename" placeholder="換宿店家" />
+												<select name="worktype" id="worktype" required>
+    											    <option value="" disabled selected hidden>請選擇工作行業別</option>
+    											    <option value="restuarant">餐廳</option>
+    											    <option value="hostol">民宿</option>
+   											      	<option value="bistro">酒吧</option>
+   											      	<option value="divestore">潛店</option>
+   											      	<option value="ohmiyaga">名產店</option>
+   											      	<option value="farm">農場</option>
+   											      	<option value="coffeeshop">咖啡廳</option>
+   											      	<option value="brunch">早餐/早午餐</option>
+   											      	<option value="drink">飲料店/果汁店</option>
+   											      	<option value="handmake">手作商店</option>
+   											      	<option value="others">其他</option>
+   											   </select>
 											</div>
+
+											<div class="col-6 col-12-medium">
+												<input type="text" name="startdate" id="startdate" value="" placeholder="換宿時間（起）" required/>
+          									 	<input type="date" id="startDatePicker" style="display: none;" required/><br>
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<input type="text" name="enddate" id="enddate" value="" placeholder="換宿時間（訖）" required/>
+          									 	<input type="date" id="endDatePicker" style="display: none;" required/><br>
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<select name="place" id="plcae" required>
+												<option value="" disabled selected hidden>請選擇工作地點</option>
+												<optgroup label="--北部--">
+												<option value="Taipei">台北</option>
+												<option value="NewTaipei">新北</option>
+												<option value="Keelung">基隆</option>
+												<option value="Taoyuan">桃園</option>
+												<option value="Hsinchu">新竹</option>
+												</optgroup>
+												<optgroup label="--中部--">
+												<option value="Miaoli">苗栗</option>
+												<option value="Taichung">台中</option>
+												<option value="Changhua">彰化</option>
+												<option value="Nantou">南投</option>
+												<option value="Yunlin">雲林</option>
+												</optgroup>
+												<optgroup label="--南部--">
+												<option value="Chiayi">嘉義</option>
+												<option value="Tainan">台南</option>
+												<option value="Kaohsiung">高雄</option>
+												<option value="Pingtung">屏東</option>
+												</optgroup>
+												<optgroup label="--東部--">
+												<option value="Hualien">花蓮</option>
+												<option value="Taitung">台東</option>
+												</optgroup>
+												<optgroup label="--離島--">
+												<option value="Penghu">澎湖</option>
+												<option value="Kinmen">金門</option>
+												<option value="Matsu">馬祖</option>
+												<option value="OutOfTaiwan">--離島--</option>
+												</optgroup>	
+											</select>	
+										</div>	
+
+											<div class="col-6 col-12-medium">
+												<select name="grade" id="grade" required>
+    											    <option value="" disabled selected hidden>推薦換宿指數</option>
+    											    <option value="one">1分 非常差勁</option>
+    											    <option value="two">2分 有待改善</option>
+   											      	<option value="three">3分 一般水平</option>
+   											      	<option value="four">4分 表現尚可</option>
+   											      	<option value="five">5分 免強滿意</option>
+   											      	<option value="six">6分 及格</option>
+   											      	<option value="seven">7分 高於平均水準</option>
+   											      	<option value="eight">8分 高度評價</option>
+   											      	<option value="nine">9分 非常出色</option>
+   											      	<option value="ten">10分 超出想象的優</option>
+   											      	<option value="whatthefuck">不予置評/不建議</option>
+   											   </select>
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<input type="text" name="storename" placeholder="店家名稱（可部分隱藏）" required/>
+											</div>
+
+										
+											<div class="col-6 col-12-medium">
+   											 <input type="text" name="updatedate" id="updatedate" value="" placeholder="心得上傳日期" readonly required/><br>
+											</div>
+
+
 											<div class="col-12">
-												<input type="text" name="changeDate" placeholder="換宿期間" />
+												<textarea name="workdetail" placeholder="工作內容" rows="6"></textarea>
 											</div>
+
 											<div class="col-12">
-												<textarea name="message" placeholder="換宿心得" rows="6"></textarea>
+												<textarea name="content" placeholder="換宿心得" rows="6"></textarea>
 											</div>
+
 											<ul class="actions">
 											<li><a href="share" class="button active">分享</a></li>
 											</ul>
+
 										</div>
 									</div>
 								</form>
+
+										<script>
+   										// 顯示日期選擇
+     										  document.getElementById('startdate').addEventListener('click', function() {
+        										   document.getElementById('startDatePicker').style.display = 'block';
+        										   document.getElementById('startDatePicker').focus();
+      										 });
+     										  document.getElementById('enddate').addEventListener('click', function() {
+        										   document.getElementById('endDatePicker').style.display = 'block';
+        										   document.getElementById('endDatePicker').focus();
+      										 });
+
+
+      									// 選擇，更新，隱藏
+     										  document.getElementById('startDatePicker').addEventListener('change', function() {
+     										      document.getElementById('startdate').value = this.value;
+      										     this.style.display = 'none';
+     										     checkDateValidity();
+     										  });
+     										  document.getElementById('endDatePicker').addEventListener('change', function() {
+     										      document.getElementById('enddate').value = this.value;
+      										     this.style.display = 'none';
+     										     checkDateValidity();
+
+     										  });
+
+										// 檢查日期有效性
+										function checkDateValidity() {
+										var startDate = new Date(document.getElementById('startdate').value);
+										var endDate = new Date(document.getElementById('enddate').value);
+
+										if (endDate <= startDate) {
+										alert('結束日期必須大於開始日期！');
+										document.getElementById('enddate').value = '';
+										document.getElementById('endDatePicker').value = '';
+											}
+										}
+
+
+										// 抓當日日期
+    										const currentDate = new Date();
+
+   										// 格式化 YYYY-MM-DD HH:MM:SS
+  										  const formattedDateTime = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+
+ 										// 填到 createtime 输入框
+ 										   document.getElementById('updatedate').value = formattedDateTime;
+										</script>
+
+
 							</article>
 
 					</div>

@@ -76,6 +76,11 @@ public class MainController {
     public void helperAccount(HttpServletResponse response) throws IOException {
         response.sendRedirect("helperAccount.html"); 
     }
+    
+    @RequestMapping(value = "storeAccount", method = RequestMethod.POST)
+    public void storeAccount(HttpServletResponse response) throws IOException {
+        response.sendRedirect("storeAccount.html"); 
+    }
 
 
 }
