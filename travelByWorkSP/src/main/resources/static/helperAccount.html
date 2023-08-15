@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>個人資料</title>
+		<title>小幫手資料</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
@@ -19,7 +19,7 @@
 
 				<!-- Nav -->
 					<nav id="nav">
-						<a href="#home" class="icon solid fa-home"><span>基本資料</span></a>
+						<a href="#home" class="icon solid fa-home"><span>小幫手基本資料</span></a>
 						<a href="#work" class="icon solid fa-folder"><span>履歷</span></a>
 						<a href="#contact" class="icon solid fa-envelope"><span>查看通知</span></a>
 						<a href="#shareMe" class="icon fa-solid fa-heart"><span>分享心得</span></a>
@@ -126,7 +126,7 @@
 									<h2>心得分享</h2>
 								</header>
 
-								<form action="#" method="post">
+								<form action="share" method="post">
 
 									<div>
 										<div class="row">
@@ -137,7 +137,7 @@
 
 											<div class="col-6 col-12-medium">
 												<select name="worktype" id="worktype" required>
-    											    <option value="" disabled selected hidden>請選擇工作行業別</option>
+    											    <option value="" disabled selected hidden>*請選擇工作行業別</option>
     											    <option value="restuarant">餐廳</option>
     											    <option value="hostol">民宿</option>
    											      	<option value="bistro">酒吧</option>
@@ -153,18 +153,18 @@
 											</div>
 
 											<div class="col-6 col-12-medium">
-												<input type="text" name="startdate" id="startdate" value="" placeholder="換宿時間（起）" required/>
+												<input type="text" name="startdate" id="startdate" value="" placeholder="*換宿時間（起）" required/>
           									 	<input type="date" id="startDatePicker" style="display: none;" required/><br>
 											</div>
 
 											<div class="col-6 col-12-medium">
-												<input type="text" name="enddate" id="enddate" value="" placeholder="換宿時間（訖）" required/>
+												<input type="text" name="enddate" id="enddate" value="" placeholder="*換宿時間（訖）" required/>
           									 	<input type="date" id="endDatePicker" style="display: none;" required/><br>
 											</div>
 
 											<div class="col-6 col-12-medium">
 												<select name="place" id="plcae" required>
-												<option value="" disabled selected hidden>請選擇工作地點</option>
+												<option value="" disabled selected hidden>*請選擇工作地點</option>
 												<optgroup label="--北部--">
 												<option value="Taipei">台北</option>
 												<option value="NewTaipei">新北</option>
@@ -204,13 +204,13 @@
 
 
 											<div class="col-6 col-12-medium">
-												<input type="text" name="storename" placeholder="店家名稱（可部分隱藏）" required/>
+												<input type="text" name="storename" placeholder="*店家名稱（可部分隱藏）" required/>
 											</div>
 
 
 											<div class="col-6 col-12-medium">
 												<select name="grade" id="grade" required>
-    											    <option value="" disabled selected hidden>推薦換宿指數</option>
+    											    <option value="" disabled selected hidden>*推薦換宿指數</option>
     											    <option value="one">1分 非常差勁</option>
     											    <option value="two">2分 有待改善</option>
    											      	<option value="three">3分 一般水準</option>
@@ -232,16 +232,16 @@
 
 
 											<div class="col-12">
-												<textarea name="workdetail" placeholder="工作內容" rows="6"></textarea>
+												<textarea name="workdetail" placeholder="*工作內容" rows="6"></textarea>
 											</div>
 
 											<div class="col-12">
-												<textarea name="content" placeholder="換宿心得" rows="6"></textarea>
+												<textarea name="content" placeholder="*換宿心得" rows="6"></textarea>
 											</div>
 
-											<ul class="actions">
-											<li><a href="share" class="button active">分享</a></li>
-											</ul>
+											<div class="align-center ">
+											<input type="submit" value="分享心得" style="font-size:20px;"> 
+											</div>
 
 										</div>
 									</div>

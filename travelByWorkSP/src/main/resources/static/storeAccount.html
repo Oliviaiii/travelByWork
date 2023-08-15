@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>個人資料</title>
+		<title>店家資料</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
@@ -20,9 +20,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="#home" class="icon solid fa-home"><span>基本資料</span></a>
-						<a href="#work" class="icon solid fa-folder"><span>履歷</span></a>
+						<a href="#work" class="icon fa-solid fa-heart"><span>我的小幫手</span></a>
 						<a href="#contact" class="icon solid fa-envelope"><span>查看通知</span></a>
-						<a href="#shareMe" class="icon fa-solid fa-heart"><span>分享心得</span></a>
+						<a href="#shareMe" class="icon solid fa-folder"><span>新增職缺</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -123,48 +123,24 @@
 					<!-- share -->
 							<article id="shareMe" class="panel">
 								<header>
-									<h2>心得分享</h2>
+									<h2>新增職缺</h2>
 								</header>
 
-								<form action="#" method="post">
+								<form action="postJob" method="post">
 
 									<div>
 										<div class="row">
 
-											<div class="col-6 col-12-medium">
-												<input type="text" name="username" placeholder="暱稱" readonly/>
+											<div class="col-3 col-12-medium">
+												<input type="text" name="stroename" placeholder="店家名稱" readonly/>
 											</div>
 
-											<div class="col-6 col-12-medium">
-												<select name="worktype" id="worktype" required>
-    											    <option value="" disabled selected hidden>請選擇工作行業別</option>
-    											    <option value="restuarant">餐廳</option>
-    											    <option value="hostol">民宿</option>
-   											      	<option value="bistro">酒吧</option>
-   											      	<option value="divestore">潛店</option>
-   											      	<option value="ohmiyaga">名產店</option>
-   											      	<option value="farm">農場</option>
-   											      	<option value="coffeeshop">咖啡廳</option>
-   											      	<option value="brunch">早餐/早午餐</option>
-   											      	<option value="drink">飲料店/果汁店</option>
-   											      	<option value="handmake">手作商店</option>
-   											      	<option value="others">其他</option>
-   											   </select>
+											<div class="col-3 col-12-medium">
+												<input type="text" name="ownername" placeholder="負責人名稱" readonly/>
 											</div>
-
-											<div class="col-6 col-12-medium">
-												<input type="text" name="startdate" id="startdate" value="" placeholder="換宿時間（起）" required/>
-          									 	<input type="date" id="startDatePicker" style="display: none;" required/><br>
-											</div>
-
-											<div class="col-6 col-12-medium">
-												<input type="text" name="enddate" id="enddate" value="" placeholder="換宿時間（訖）" required/>
-          									 	<input type="date" id="endDatePicker" style="display: none;" required/><br>
-											</div>
-
-											<div class="col-6 col-12-medium">
-												<select name="place" id="plcae" required>
-												<option value="" disabled selected hidden>請選擇工作地點</option>
+											<div class="col-3 col-12-medium">
+												<select name="location" id="location" required>
+    											<option value="" disabled selected hidden>*請選擇工作地區</option>
 												<optgroup label="--北部--">
 												<option value="Taipei">台北</option>
 												<option value="NewTaipei">新北</option>
@@ -200,60 +176,179 @@
 
 												</optgroup>	
 											</select>	
-										</div>	
-
-
-											<div class="col-6 col-12-medium">
-												<input type="text" name="storename" placeholder="店家名稱（可部分隱藏）" required/>
+											</div>
+										
+											<div class="col-3 col-12-medium">
+   											 <input type="text" name="workupdatetime" id="workupdatetime" value="" placeholder="職缺上傳日期" readonly required/><br>
 											</div>
 
 
+											<div class="col-12 col-12-medium">
+												<input type="text" name="address" placeholder="工作地點（地址）" readonly/>
+											</div>
+
+											<div class="col-12 col-12-medium">
+												<input type="text" name="email" placeholder="Gmail信箱" readonly/>
+											</div>
+
 											<div class="col-6 col-12-medium">
-												<select name="grade" id="grade" required>
-    											    <option value="" disabled selected hidden>推薦換宿指數</option>
-    											    <option value="one">1分 非常差勁</option>
-    											    <option value="two">2分 有待改善</option>
-   											      	<option value="three">3分 一般水準</option>
-   											      	<option value="four">4分 表現尚可</option>
-   											      	<option value="five">5分 達及格線</option>
-   											      	<option value="six">6分 及格</option>
-   											      	<option value="seven">7分 高於平均水準</option>
-   											      	<option value="eight">8分 高度評價</option>
-   											      	<option value="nine">9分 非常出色</option>
-   											      	<option value="ten">10分 超出想象的優</option>
-   											      	<option value="whatthefuck">不予置評/不建議</option>
+												<input type="text" name="mobile" placeholder="手機" readonly/>
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<input type="text" name="phone" placeholder="店家電話號碼" readonly/>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="workage" id="workage" required>
+    											    <option value="" disabled selected hidden>*最低換宿年齡</option>
+    											    <option value="upof18">18歲</option>
+    											    <option value="upof20">20歲</option>
+   											      	<option value="upof25">25歲</option>
+   											      	<option value="none">不限（禁止未成年）</option>
    											   </select>
 											</div>
 
-										
-											<div class="col-6 col-12-medium">
-   											 <input type="text" name="updatedate" id="updatedate" value="" placeholder="心得上傳日期" readonly required/><br>
+											<div class="col-4 col-12-medium">
+												<select name="worksexual" id="worksexual" required>
+    											    <option value="" disabled selected hidden>*換宿需求性別(宿舍問題）</option>
+    											    <option value="female">女性</option>
+    											    <option value="male">男性</option>
+   											      	<option value="none">不限</option>
+   											   </select>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="howtoapply" id="howtoapply" required>
+    											    <option value="" disabled selected hidden>*申請方式</option>
+    											    <option value="email">信箱</option>
+    											    <option value="text">簡訊詢問</option>
+    											    <option value="phonecall">來電詢問</option>
+   											      	<option value="allaccept">以上皆可(其他方式詳見備註)</option>
+   											   </select>
+											</div>
+
+											<div class="col-12">
+												<textarea name="others" placeholder="*其他換宿條件＆備註" rows="3" required></textarea>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<input type="text" name="changedatebegin" id="changedatebegin" value="" placeholder="*應徵換宿時間（起）" required/>
+          									 	<input type="date" id="startDatePicker" style="display: none;" required/><br>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<input type="text" name="changedateeend" id="changedateeend" value="" placeholder="*應徵換宿時間（訖）" required/>
+          									 	<input type="date" id="endDatePicker" style="display: none;" required/><br>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="aleastdays" id="aleastdays" required>
+    											    <option value="" disabled selected hidden>*最短換宿時間</option>
+    											    <option value="always">一天</option>
+    											    <option value="oneweek">一週</option>
+   											      	<option value="twoweeks">兩週</option>
+   											      	<option value="onemon">一個月</option>
+   											      	<option value="twomon">兩個月</option>
+   											      	<option value="whatever">想待多久待多久</option>
+   											   </select>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="breaktime" id="breaktime" required>
+    											    <option value="" disabled selected hidden>*週休天數</option>
+    											    <option value="onceaweek">一週一天</option>
+    											    <option value="twiceaweek">一週兩天</option>
+    											    <option value="none">無休息日</option>
+   											      	<option value="others">聯絡討論</option>
+   											   </select>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="workhours" id="workhours" required>
+    											    <option value="" disabled selected hidden>*一天工時</option>
+    											    <option value="less3hr">不超過三小時</option>
+    											    <option value="less4hr">不超過四小時</option>
+    											    <option value="less5hr">不超過五小時</option>
+    											    <option value="less6hr">不超過六小時</option>
+   											      	<option value="others">聯絡討論</option>
+   											   </select>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="atwhattime" id="atwhattime" required>
+    											    <option value="" disabled selected hidden>*班別</option>
+    											    <option value="morning">早班（早上9點前上班）</option>
+    											    <option value="afternoon">午班（下午1點前上班）</option>
+    											    <option value="evening">晚班（傍晚6點前上班）</option>
+    											    <option value="night">大夜班（晚上8點前上班）</option>
+   											      	<option value="others">其他</option>
+   											   </select>
 											</div>
 
 
 											<div class="col-12">
-												<textarea name="workdetail" placeholder="工作內容" rows="6"></textarea>
+												<textarea name="content" placeholder="*工作內容" rows="3" required></textarea>
+											</div>
+
+											<div class="col-4 col-12-medium">
+												<select name="scooters" id="scooters" required>
+    											    <option value="" disabled selected hidden>*是否提供交通工具</option>
+    											    <option value="normalscooter">一般摩托車</option>
+    											    <option value="elescooter">電動摩托車</option>
+    											    <option value="bike">腳踏車</option>
+    											    <option value="none">無</option>
+   											      	<option value="others">其他</option>
+   											   </select>
+											</div>
+
+
+   											 <div class="col-4 col-12-medium">
+												<select name="meals" id="meals" required>
+    											    <option value="" disabled selected hidden>*是否提供餐食</option>
+    											    <option value="onceaday">一餐</option>
+    											    <option value="twiceaday">兩餐</option>
+    											    <option value="allday">三餐</option>
+    											    <option value="none">無供餐</option>
+   											      	<option value="others">其他</option>
+   											   </select>
+   											 </div>
+
+
+
+
+
+											<div class="col-4 col-12-medium">
+												<select name="money" id="money" required>
+    											    <option value="" disabled selected hidden>*是否提供零用金</option>
+    											    <option value="two">一週200</option>
+    											    <option value="five">一週500</option>
+   											      	<option value="oneth">一週1000</option>
+   											      	<option value="onefive">一週1500</option>
+   											      	<option value="twoth">一週2000</option>
+   											      	<option value="other">另議</option>
+   											      	<option value="none">無供零用金</option>
+   											   </select>
 											</div>
 
 											<div class="col-12">
-												<textarea name="content" placeholder="換宿心得" rows="6"></textarea>
+												<textarea name="workdetail" placeholder="*其他福利" rows="3" required></textarea>
 											</div>
 
-											<ul class="actions">
-											<li><a href="share" class="button active">分享</a></li>
-											</ul>
-
+											<div class="align-center ">
+											<input type="submit" value="送出履歷" style="font-size:20px;"> 
+											</div>
 										</div>
 									</div>
 								</form>
 
 										<script>
    										// 顯示日期選擇
-     										  document.getElementById('startdate').addEventListener('click', function() {
+     										  document.getElementById('changedatebegin').addEventListener('click', function() {
         										   document.getElementById('startDatePicker').style.display = 'block';
         										   document.getElementById('startDatePicker').focus();
       										 });
-     										  document.getElementById('enddate').addEventListener('click', function() {
+     										  document.getElementById('changedateeend').addEventListener('click', function() {
         										   document.getElementById('endDatePicker').style.display = 'block';
         										   document.getElementById('endDatePicker').focus();
       										 });
@@ -261,12 +356,12 @@
 
       									// 選擇，更新，隱藏
      										  document.getElementById('startDatePicker').addEventListener('change', function() {
-     										      document.getElementById('startdate').value = this.value;
+     										      document.getElementById('changedatebegin').value = this.value;
       										     this.style.display = 'none';
      										     checkDateValidity();
      										  });
      										  document.getElementById('endDatePicker').addEventListener('change', function() {
-     										      document.getElementById('enddate').value = this.value;
+     										      document.getElementById('changedateeend').value = this.value;
       										     this.style.display = 'none';
      										     checkDateValidity();
 
@@ -274,12 +369,12 @@
 
 										// 檢查日期有效性
 										function checkDateValidity() {
-										var startDate = new Date(document.getElementById('startdate').value);
-										var endDate = new Date(document.getElementById('enddate').value);
+										var startDate = new Date(document.getElementById('changedatebegin').value);
+										var endDate = new Date(document.getElementById('changedateeend').value);
 
 										if (endDate <= startDate) {
 										alert('結束日期必須大於開始日期！');
-										document.getElementById('enddate').value = '';
+										document.getElementById('changedateeend').value = '';
 										document.getElementById('endDatePicker').value = '';
 											}
 										}
@@ -292,7 +387,7 @@
   										  const formattedDateTime = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
 
  										// 填到 createtime 输入框
- 										   document.getElementById('updatedate').value = formattedDateTime;
+ 										   document.getElementById('workupdatetime').value = formattedDateTime;
 										</script>
 
 
