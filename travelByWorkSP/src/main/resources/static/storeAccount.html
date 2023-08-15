@@ -11,6 +11,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
+		<!-- logo -->
+		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
+
+		<style>
+			/* 更改输入字段的宽度 */
+			.col-8 input,
+			.col-11 input {
+				width: 100%; /* 设置为100%以占据整个列宽 */
+			}
+
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -29,16 +40,89 @@
 					<div id="main">
 
 						<!-- Me -->
-							<article id="home" class="panel intro">
-								<header>
-									<h1>小幫手名稱</h1>
-									<p>詳細資訊</p>
-								</header>
-								<a href="#work" class="jumplink pic">
-									<span class="arrow icon solid fa-chevron-right"><span>查看履歷</span></span>
-								<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" />
+						<article id="home" class="panel intro">
+							<header>
+								<h1>店家名稱</h1>
+								<p>詳細資訊s</p>
+								<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" style="max-width: 100%; max-height: 100%;"/>
+							</header>
+							<fform id="userForm" action="#" method="post">
+								<div>
+									<br>
+									<div class="row">
+										<div class="col-7 col-12-medium">
+											<input type="text" name="helpermemberid" value="" placeholder="會員編號" disabled/>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="account" value="" placeholder="帳號" disabled/>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="password" value="" placeholder="密碼" disabled/>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="username" value="" placeholder="暱稱" disabled/>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="name" value="" placeholder="真實姓名" disabled/>
+										</div>
+										<div class="col-8 col-12-medium">
+											<input type="text" name="mobile" value="" placeholder="手機號碼" disabled/>
+										</div>
+										<div class="col-11 col-12-medium">
+											<input type="text" name="email" value="" placeholder="電子信箱" disabled/>
+										</div>
+										
+
+										
+										<br><br><br>
+									</div>
 								
-							</article>
+									<button id="editButton" type="button">修改基本資料</button>
+
+									<button id="saveButton" type="button" style="display: none;">保存資料</button>
+									<br><br>
+								</div>
+							</form>
+
+							
+
+						</article>
+
+						<script>
+							const editButton = document.getElementById('editButton');
+							const saveButton = document.getElementById('saveButton');
+							const form = document.getElementById('userForm');
+							const inputs = form.querySelectorAll('input');
+							
+							// Function to enable inputs and toggle buttons
+							function enableInputs() {
+								for (const input of inputs) {
+									const inputName = input.getAttribute('name');
+									if (inputName !== 'helpermemberid' && inputName !== 'email' && inputName !== 'account' && inputName !== 'name') {
+										input.removeAttribute('disabled');
+									}
+								}
+								editButton.style.display = 'none';
+								saveButton.style.display = 'inline-block';
+							}
+
+							
+							// Function to disable inputs and toggle buttons
+							function disableInputs() {
+								for (const input of inputs) {
+									input.setAttribute('disabled', 'true');
+								}
+								editButton.style.display = 'inline-block';
+								saveButton.style.display = 'none';
+							}
+							
+							// Attach event listeners
+							editButton.addEventListener('click', enableInputs);
+							saveButton.addEventListener('click', disableInputs);
+							
+							// Initially disable inputs
+							disableInputs();
+							</script>
 
 						<!-- Work -->
 							<article id="work" class="panel">
