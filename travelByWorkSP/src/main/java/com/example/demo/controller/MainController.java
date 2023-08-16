@@ -62,14 +62,16 @@ public class MainController {
         response.sendRedirect("contactUs.html");
     }
 
-//    @RequestMapping("emailSuccess")
-//    public void emailSuccess(HttpServletResponse response) throws IOException {
-//        response.sendRedirect("emailSuccess.html");
-//    }
+
     
     @RequestMapping("emailProof")
     public void emailProof(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailProof.html");
+    }
+    
+    @RequestMapping("emailSuccess")
+    public void emailSuccess(HttpServletResponse response) throws IOException {
+        response.sendRedirect("emailSuccess.html");
     }
 
     @RequestMapping("forgetPassword")
