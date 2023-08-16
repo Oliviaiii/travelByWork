@@ -10,6 +10,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
+
+
+		<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
 
 		<!-- logo -->
@@ -34,8 +45,9 @@
 					<nav id="nav">
 						<a href="#home" class="icon solid fa-home"><span>個人資料</span></a>
 						<a href="#work" class="icon solid fa-folder"><span>履歷</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>查看通知</span></a>
+						<a href="#contact" class="icon solid fa-envelope"><span>已投遞店家</span></a>
 						<a href="#shareMe" class="icon fa-solid fa-heart"><span>分享心得</span></a>
+						<a href="#" class="icon solid fa-home"><span>通知</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -265,40 +277,35 @@
 						<!-- Contact -->
 							<article id="contact" class="panel">
 								<header>
-									<h2>系統通知</h2>
+									<h2>已投遞通知</h2>
 								</header>
 								
-								<table>
-									<thead>
-										<tr>
-											<th>已投履歷店家</th>
-											<th>投遞時間</th>
-											<th>店家是否查閱</th>
-											<th>取消</th>
+								<div class="row">
+									<table class="table table-light table-hover" border="1">
+										<tr class="table table-danger">
+											<th>店家編號</th>
+											<th>店家姓名</th>
+											<th>店家負責人</th> 
+											<th>聯絡電話</th>
+											<th>聯絡信箱</th>
+											<th>取消投遞</th>
 										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>ABC Store</td>
-											<td>2023-08-15 10:30 AM</td>
-											<td>是</td>
-											<td><button>取消</button></td>
-										</tr>
-										<tr>
-											<td>XYZ Company</td>
-											<td>2023-08-14 03:45 PM</td>
-											<td>否</td>
-											<td><button>取消</button></td>
-										</tr>
-										<tr>
-											<td>123 Shop</td>
-											<td>2023-08-13 09:15 AM</td>
-											<td>是</td>
-											<td><button>取消</button></td>
-										</tr>
-										<!-- 可以繼續添加更多行 -->
-									</tbody>
-								</table>
+										<tr th:each="item : ${storeworklist}">
+											<td th:text="${item.storeworklist.storeworklistid }"></td>
+											<td th:text="${item.storeworklist.storename }"></td>
+											<td th:text="${item.storeworklist.ownername }"></td>
+											<td th:text="${item.storeworklist.mobile }"></td>
+											<td th:text="${item.storeworklist.email }"></td>
+											<td>
+											   <a th:href="@{'/storeworklist/remove/'+${item.storeworklist.storeworklistid }}"
+											onclick="return confirm('確定要刪除')" class="btn btn-danger">刪除</a>
+												<a th:href="@{'/storeworklist/update/'+${item.storeworklist.storeworklistid }}"
+												class="btn btn-primary">修改</a></td>
+											</td>
+										</tr>			
+						
+									</table>
+								</div>
 
 								
 

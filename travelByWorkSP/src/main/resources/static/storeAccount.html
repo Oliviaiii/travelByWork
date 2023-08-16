@@ -11,6 +11,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
+
+		<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
+
 		<!-- logo -->
 		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
 
@@ -42,34 +54,84 @@
 						<!-- Me -->
 						<article id="home" class="panel intro">
 							<header>
-								<h1>店家名稱</h1>
-								<p>詳細資訊s</p>
-								<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" style="max-width: 100%; max-height: 100%;"/>
+								<h1>基本資料</h1>
+								<p>修改之後記得保存</p>
+								<img src="https://imgur.com/a/XADhsNj.jpg" alt="我的LOGO" style="max-width: 100%; max-height: 100%;"/>
 							</header>
-							<fform id="userForm" action="#" method="post">
+							<form id="userForm" action="#" method="post">
 								<div>
 									<br>
 									<div class="row">
-										<div class="col-7 col-12-medium">
-											<input type="text" name="helpermemberid" value="" placeholder="會員編號" disabled/>
+										
+										<div class="col-3 col-12-medium">
+											<label for="storememberid">店家會員編號：</label>
+										</div>
+										<div class="col-8 col-12-medium">
+											<input type="text" name="storememberid" value="" placeholder="店家會員編號" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="account">你的帳號：</label>
 										</div>
 										<div class="col-7 col-12-medium">
 											<input type="text" name="account" value="" placeholder="帳號" disabled/>
 										</div>
-										<div class="col-7 col-12-medium">
-											<input type="text" name="password" value="" placeholder="密碼" disabled/>
+
+										<div class="col-3 col-12-medium">
+											<label for="password">你的密碼：</label>
 										</div>
 										<div class="col-7 col-12-medium">
-											<input type="text" name="username" value="" placeholder="暱稱" disabled/>
+											<input type="text" name="password" value="" placeholder="密碼(可修改)" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="storename">店家名稱：</label>
 										</div>
 										<div class="col-7 col-12-medium">
-											<input type="text" name="name" value="" placeholder="真實姓名" disabled/>
+											<input type="text" name="storename" value="" placeholder="店家名稱" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="ownername">負責人姓名：</label>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="ownername" value="" placeholder="負責人姓名(可修改)" disabled/>
+										</div>
+
+
+										<div class="col-3 col-12-medium">
+											<label for="address ">店家登記地址：</label>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="address " value="" placeholder="地址(可修改)" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="pohne">店內電話：</label>
+										</div>
+										<div class="col-7 col-12-medium">
+											<input type="text" name="pohne" value="" placeholder="店家號碼（可修改）" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="mobile">你的手機號碼：</label>
 										</div>
 										<div class="col-8 col-12-medium">
-											<input type="text" name="mobile" value="" placeholder="手機號碼" disabled/>
+											<input type="text" name="mobile" value="" placeholder="手機號碼(可修改)" disabled/>
 										</div>
-										<div class="col-11 col-12-medium">
+
+										<div class="col-3 col-12-medium">
+											<label for="password">信箱：</label>
+										</div>
+										<div class="col-8 col-12-medium">
 											<input type="text" name="email" value="" placeholder="電子信箱" disabled/>
+										</div>
+
+										<div class="col-3 col-12-medium">
+											<label for="createtime">加入時間：</label>
+										</div>
+										<div class="col-8 col-12-medium">
+											<input type="text" name="createtime" value="" placeholder="創建時間" disabled/>
 										</div>
 										
 
@@ -89,16 +151,23 @@
 						</article>
 
 						<script>
+
+							// 獲取編輯按鈕和保存按鈕
 							const editButton = document.getElementById('editButton');
 							const saveButton = document.getElementById('saveButton');
+
+							 // 獲取表單元素 輸入欄位
 							const form = document.getElementById('userForm');
 							const inputs = form.querySelectorAll('input');
 							
-							// Function to enable inputs and toggle buttons
+							// 編輯輸入欄位 切換按鈕
 							function enableInputs() {
 								for (const input of inputs) {
 									const inputName = input.getAttribute('name');
-									if (inputName !== 'helpermemberid' && inputName !== 'email' && inputName !== 'account' && inputName !== 'name') {
+									// 排除特定的輸入欄位
+									if (inputName !== 'storememberid' && inputName !== 'storename' 
+									&& inputName !== 'account' && inputName !== 'email' 
+									 && inputName !== 'createtime') {
 										input.removeAttribute('disabled');
 									}
 								}
@@ -107,7 +176,7 @@
 							}
 
 							
-							// Function to disable inputs and toggle buttons
+							// 鎖定輸入欄位 切換按鈕
 							function disableInputs() {
 								for (const input of inputs) {
 									input.setAttribute('disabled', 'true');
@@ -116,63 +185,53 @@
 								saveButton.style.display = 'none';
 							}
 							
-							// Attach event listeners
+							// 監聽事件
 							editButton.addEventListener('click', enableInputs);
 							saveButton.addEventListener('click', disableInputs);
 							
-							// Initially disable inputs
+							// 初始
 							disableInputs();
 							</script>
 
-						<!-- Work -->
-							<article id="work" class="panel">
-								<header>
-									<h2>履歷</h2>
-								</header>
-								<p>
-									履歷
-								</p>
-								<section>
-									<div class="row">
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic01.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic02.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic03.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic04.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic05.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic06.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic07.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic08.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic09.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic10.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic11.jpg" alt=""></a>
-										</div>
-										<div class="col-4 col-6-medium col-12-small">
-											<a href="#" class="image fit"><img src="images1/pic12.jpg" alt=""></a>
-										</div>
-									</div>
-								</section>
-							</article>
+							
+						<!-- HELPERSHW -->
+						<article id="work" class="panel">
+							<header>
+								<h2>我的小幫手</h2>
+							</header>
+							
+							<div class="row">
+								<table class="table table-light table-hover" border="1">
+									<tr class="table table-danger">
+										<th>小幫手編號</th>
+										<th>暱稱</th>
+										<th>性別</th>
+										<th>年齡</th> 
+										<th>照片</th>
+										<th>履歷</th>
+										<th>取消此位投遞</th>
+									</tr>
+									<tr th:each="item : ${helpermember , helperCV}">
+										<td th:text="${item.helpermember.helpermemberid }"></td>
+										<td th:text="${item.helpermember.username }"></td>
+										<td th:text="${item.helpermember.sexual }"></td>
+										<td th:text="${item.helpermember.birth }"></td>
+										<td th:text="${item.helperCV.helperpohto }"></td>
+										<td th:text="${item.helperCV.helperCV }"></td>
+										<td>
+										   <a th:href="@{'/storeworklist/remove/'+${item.storeworklist.storeworklistid }}"
+										onclick="return confirm('確定要刪除')" class="btn btn-danger">刪除</a>
+											<a th:href="@{'/storeworklist/update/'+${item.storeworklist.storeworklistid }}"
+											class="btn btn-primary">修改</a></td>
+										</td>
+									</tr>			
+					
+								</table>
+							</div>
+
+							
+
+						</article>
 
 						<!-- Contact -->
 							<article id="contact" class="panel">
