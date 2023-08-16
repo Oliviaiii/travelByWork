@@ -60,10 +60,10 @@
 								<section>
 									<h4>輸入註冊基料</h4>
 									
-									<form method="post" action="emailSuccess">
+									<form method="post" action="emailProof">
 										<div class="row.aln-center"> 
 
-										
+								
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="storename" id="storename" value="" placeholder="店家名稱" required/> <br>
 
@@ -86,8 +86,10 @@
 											<div id="passwordMismatchError" style="color: red;"></div>
 
 											<div class="col-6 col-12-xsmall">
-											<input type="email" name="email" id="email" value="" placeholder="電子郵件（請輸入Gmail完成驗證）@gmail.com" 
-											pattern=".+@gmail\.com$" title="請輸入以 @gmail.com 結尾的有效電子郵件地址" required /><br>
+												
+												<input type="email" name="email" id="hiddenEmail" value="" placeholder="電子郵件（請輸入Gmail完成驗證）@gmail.com" 
+													pattern=".+@gmail\.com$" title="請輸入以 @gmail.com 結尾的有效電子郵件地址" required 
+													oninput="updateHiddenEmail(this.value);" /><br>
 											</div>
 											
 					
@@ -112,7 +114,12 @@
 										
 										<script>
    										
-									
+										//email隱藏
+										function updateHiddenEmail(value) {
+ 										   document.getElementById("hiddenEmail").value = value;
+  										   sessionStorage.setItem("email", value);
+										}
+										
 										// 抓當日日期
     										const currentDate = new Date();
 

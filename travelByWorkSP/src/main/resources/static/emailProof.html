@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>忘記密碼？</title>
+    <title>信箱驗證</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -52,33 +52,34 @@
 					</header>
         <section id="banner">
             <div class="inner">
-                <h2>忘記密碼？</h2>
-				<p>輸入Gmail! 傳送驗證碼！ 驗證成功將發送密碼給你</p>
-				
+                <h2>信箱驗證</h2>
+				<p>已將驗證號碼寄到你的Gmail! 驗證後開啟帳號</p>
                 <!-- Login Form -->
-                <form action="forgetPasswordSuccess" method="post">
-                    
-                    <input type="text" name="email" id="email" placeholder="輸入你的註冊信箱" required>  <br>
+                <form action="helperAccount" method="post">
+                   
+
+                    <!-- 在驗證頁面中讀取 SessionStorage 的 email 值並填充到表單 -->
+
+                    <input type="hidden" id="hiddenEmail" name="hiddenEmail" value="">
+                    <input type="text" name="email" id="email" placeholder="你的信箱" readonly required>  <br>
   
                     <input type="text" id="passcode" name="passcode" placeholder="輸入驗證碼" required><br>
 
                     <input type="button" id="sendcode" value="發送驗證碼" style="font-size: 14px;">
 
+
                     <input type="submit" id="proof" value="驗證" style="font-size: 14px;">
-
                 </form>
-
-				<script>
-					
-					// 保存mail到 Session 
-					document.getElementById("proof").addEventListener("click", function() {
-						var email = document.getElementById("email").value;
-						sessionStorage.setItem("email", email);
-					});
-				
-				</script>
-               
                 
+                <script>
+                    var email = sessionStorage.getItem("email");
+                    document.getElementById("hiddenEmail").value = email;
+                    document.getElementById("email").value = email;
+                </script>
+                
+                <p><a href="forgetPassword">忘記密碼？</a></p>
+                
+                <p><a href="helperSignUp">註冊成為小幫手</a></p>
             </div>
         </section>
         <!-- ... Rest of the content ... -->

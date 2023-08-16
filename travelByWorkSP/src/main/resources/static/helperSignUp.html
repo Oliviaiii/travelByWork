@@ -64,10 +64,10 @@
 								<section>
 									<h4>輸入註冊基料</h4>
 									
-									<form method="post" action="emailSuccess">
+									<form method="post" action="emailProof">
 										<div class="row.aln-center"> 
 
-										
+
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="username" id="username" value="" placeholder="暱稱（大家都叫你什麼？）" required/> <br>
 
@@ -90,13 +90,14 @@
 											<div id="passwordMismatchError" style="color: red;"></div>
 
 											<div class="col-6 col-12-xsmall">
-											<input type="email" name="email" id="email" value="" placeholder="電子郵件（請輸入Gmail完成驗證）@gmail.com" 
-											pattern=".+@gmail\.com$" title="請輸入以 @gmail.com 結尾的有效電子郵件地址" required /><br>
+												<input type="email" name="email" id="hiddenEmail" value="" placeholder="電子郵件（請輸入Gmail完成驗證）@gmail.com" 
+													pattern=".+@gmail\.com$" title="請輸入以 @gmail.com 結尾的有效電子郵件地址" required 
+													oninput="updateHiddenEmail(this.value);" /><br>
 											</div>
 											
 											 <div class="col-6 col-12-xsmall">
-           									 <input type="text" name="birth" id="birth" value="" placeholder="生日" required/>
-          									  <input type="date" id="birthPicker" style="display: none;" required/><br>
+           									 <input type="text" name="birth" id="birth" value="" placeholder="生日" required/><br>
+          									  <input type="date" id="birthPicker" style="display: none;" required/>
      										   </div>
  
 											<div class="col-6 col-12-xsmall">
@@ -122,6 +123,12 @@
             						    </form>
 										
 										<script>
+										//email隱藏
+										function updateHiddenEmail(value) {
+ 										   document.getElementById("hiddenEmail").value = value;
+  										   sessionStorage.setItem("email", value);
+										}
+
    										// 顯示日期選擇
      										  document.getElementById('birth').addEventListener('click', function() {
         										   document.getElementById('birthPicker').style.display = 'block';
