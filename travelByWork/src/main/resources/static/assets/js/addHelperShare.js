@@ -39,6 +39,8 @@ function result(data){
 
 $("#addShareForm").submit(addHelperShare);
 
+
+//oli
 $(document).ready(function() {
     // Get share data from the backend
     $.ajax({
