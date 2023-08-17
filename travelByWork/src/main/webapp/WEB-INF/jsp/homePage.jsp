@@ -80,7 +80,7 @@
 						<section class="spotlight">
 							<div class="image"><img src="images/pic01.jpg" alt="" /></div><div class="content">
 								<h2>店家可快速查閱當前有意願的小幫手<br />
-								完成Gmail驗證可解鎖</h2>
+								完成電話驗證可解鎖</h2>
 								<p>顯示小幫手姓名/身份/有無打工換宿經驗/應徵時間</p>
 							</div>
 						</section>
@@ -145,8 +145,8 @@
 								<p>網頁僅提供結訓專題呈現</p>
 							</header>
 							<ul class="actions stacked">
-								<li><a href="share" class="button fit primary">查看學長姐的心得</a></li>
-								<li><a href="helperSignUp" class="button fit">立即報名打工換宿</a></li>
+								<li><a href="share.jsp" class="button fit primary">查看學長姐的心得</a></li>
+								<li><a href="postJob.jsp" class="button fit">立即報名打工換宿</a></li>
 							</ul>
 						</div>
 					</section>
@@ -154,10 +154,10 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<ul class="icons">
-							
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-							
-							
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
 							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 						</ul>
 						<ul class="copyright">

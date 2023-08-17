@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>信箱驗證</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- logo -->
+		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
+   <style>
+    /* Center the form vertically and horizontally */
+    #banner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust this value for desired vertical alignment */
+    }
+
+    /* Adjust the width of the input fields */
+    #account, #password {
+        width: 450px; /* Change this value as needed */
+    }
+</style>
+
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="landing is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+					<header id="header" class="alt">
+						<h1><a href="homePage">打工換宿趣</a></h1>
+						<nav id="nav">
+							<ul>
+								<li class="special">
+									<a href="#menu" class="menuToggle"><span>選單</span></a>
+									<div id="menu">
+										<ul>
+											<li><a href="homePage">首頁</a></li>
+											<li><a href="what">簡介＆公告</a></li>
+											<li><a href="helperLogin">小幫手登入</a></li>
+											<li><a href="storeLogin">店家登入</a></li>
+											<li><a href="postJob">查看換宿店家</a></li>
+											<li><a href="share">分享經驗</a></li>
+											<li><a href="helperSignUp">註冊成為小幫手</a></li>
+											<li><a href="storeSignUp">註冊成為店家</a></li>
+											<li><a href="contactUs">客服</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</nav>
+					</header>
+        <section id="banner">
+            <div class="inner" th:object="${session.storeMember}">
+                <h2>信箱驗證</h2>
+				<p>已將驗證號碼寄到你的Gmail! 驗證後開啟帳號</p>
+                <!-- Login Form -->
+                <form action="emailSuccess" method="post">
+                   
+
+                    <!-- 在驗證頁面中讀取 SessionStorage 的 email 值並填充到表單 -->
+
+                    <input type="hidden" id="hiddenEmail" name="hiddenEmail" value="">
+                    <input type="text" name="email" id="email" placeholder="你的信箱" readonly required>  <br>
+                    <input type="text" id="passcode" name="passcode" placeholder="輸入驗證碼" required><br>
+                    <input type="button" id="sendcode" value="發送驗證碼" style="font-size: 14px;">
+                    <input type="submit" id="proof" value="驗證" style="font-size: 14px;">
+                </form>
+                
+                <script>
+
+                    
+
+                    var email = sessionStorage.getItem("email");
+                    document.getElementById("hiddenEmail").value = email;
+                    document.getElementById("email").value = email;
+                </script>
+                
+                <p><a href="forgetPassword">忘記密碼？</a></p>
+                
+                <p><a href="helperSignUp">註冊成為小幫手</a></p>
+            </div>
+        </section>
+        <!-- ... Rest of the content ... -->
+        <footer id="footer">
+            <!-- ... Footer content ... -->
+        </footer>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
