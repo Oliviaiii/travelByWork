@@ -2,7 +2,7 @@
  * 
  */
 function storework(event){
-    console.log("test");
+    
     event.preventDefault();
     const storeworklist = {};
 
@@ -211,3 +211,5 @@ $(document).ready(function() {
         }
     });
 });
+
+

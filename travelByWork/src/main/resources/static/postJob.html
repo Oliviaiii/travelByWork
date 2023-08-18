@@ -11,6 +11,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<!-- logo -->
@@ -69,6 +70,12 @@
 										<table class="alt">
 											<thead>
 												<tr>
+													<td colspan="2">
+														<input type="text" id="searchInput" placeholder="輸入關鍵字查詢" /><br>
+														<button id="searchButton">搜尋</button>
+													</td>
+												</tr>
+												<tr>
 													<th>店家名稱</th>
 													<th>地區</th>
 													<th>年齡限制</th>
@@ -83,16 +90,17 @@
                                                     <th>其他福利</th>
                                                     <th>聯絡方式</th><!-- 地址 信箱 手機 店內電話  -->
 												</tr>
+												
+												
 											</thead>
 											<tbody id="shareDataBody">
 												
 											</tbody>
-											<tfoot>
-												<tr>
+											
+												<tfoot>
 													
-
-												</tr>
-											</tfoot>
+												</tfoot>
+											
 										</table>
 									</div>
 								</section>
@@ -118,6 +126,27 @@
 									<p>以下為工作額外福利</p>
 								</div>
 
+								<script>
+									$(document).ready(function() {
+										// 當搜尋按鈕被點擊時觸發
+										$("#searchButton").click(function() {
+											var searchText = $("#searchInput").val(); // 獲取搜尋輸入的文本
+											searchText = searchText.toLowerCase(); // 將搜尋文本轉換為小寫，以進行不區分大小寫的比較
+								
+											// 遍歷每一行，隱藏不匹配的行並顯示匹配的行
+											$("#shareDataBody tr").each(function() {
+												var rowText = $(this).text().toLowerCase(); // 獲取行的文本
+												if (rowText.includes(searchText)) {
+													$(this).show(); // 顯示匹配的行
+												} else {
+													$(this).hide(); // 隱藏不匹配的行
+												}
+											});
+										});
+									});
+								</script>
+								
+								
                                 
 
 				<!-- Footer -->
