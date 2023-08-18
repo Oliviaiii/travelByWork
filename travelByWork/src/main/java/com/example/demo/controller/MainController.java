@@ -103,6 +103,11 @@ public class MainController {
         response.sendRedirect("storeAccount.html"); 
     }
 
+    @RequestMapping(value = "adminAccount")
+    public void adminAccount(HttpServletResponse response) throws IOException {
+        response.sendRedirect("adminAccount.html"); 
+    }
+    
     @RequestMapping(value = "storeAccount2")
     public ModelAndView storeAccount2(HttpServletResponse response) throws IOException {
     	ModelAndView model=new ModelAndView("storeAccount2.html");

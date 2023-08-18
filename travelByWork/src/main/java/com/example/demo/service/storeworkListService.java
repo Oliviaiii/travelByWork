@@ -20,7 +20,7 @@ public class storeworkListService {
 
     public String addsl(storeworkList sl) {
         
-        // 調用 slDao.save(sl) 保存數據
+        slDao.save(sl);
         return "新增成功"; 
     }
 }

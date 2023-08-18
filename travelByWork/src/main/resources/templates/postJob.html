@@ -15,6 +15,14 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<!-- logo -->
 		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
+
+        <style>
+            table.alt {
+                width: 150%; /* 調整表格寬度 */
+                margin: 0 auto; /* 將表格置中 */
+            }
+        </style>
+
 	</head>
 	<body class="is-preload">
 
@@ -65,14 +73,14 @@
 													<th>地區</th>
 													<th>年齡限制</th>
 													<th>需求性別</th>
-													<th>需求時間</th>
-													<th>最短換宿時間</th>
-                                                    <th>週休</th>
-                                                    <th>工時</th>
-                                                    <th>班別</th>
+                                                    <th>其他換宿條件＆備註</th>
+													<th>職缺時間</th>
+                                                    <th>工作時間</th>
+                                                    <th>工作內容</th>
                                                     <th>交通工具</th>
                                                     <th>供餐</th>
                                                     <th>零用金</th>
+                                                    <th>其他福利</th>
                                                     <th>聯絡方式</th><!-- 地址 信箱 手機 店內電話  -->
 												</tr>
 											</thead>
@@ -93,6 +101,24 @@
 								<div id="callDialog" title="聯絡方式">
 									<p>聯絡方式如下</p>
 								</div>
+
+                                <div id="timeDialog" title="工作時間">
+									<p>以下為工作需求時間</p>
+								</div>
+
+                                <div id="needDialog" title="其他換宿條件＆備註">
+									<p>以下為工作需求</p>
+								</div>
+
+                                <div id="workDetailDialog" title="工作內容">
+									<p>以下為工作內容</p>
+								</div>
+
+                                <div id="bonusDialog" title="工作福利">
+									<p>以下為工作額外福利</p>
+								</div>
+
+                                
 
 				<!-- Footer -->
 					<footer id="footer">
