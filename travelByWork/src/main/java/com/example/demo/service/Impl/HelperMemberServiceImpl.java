@@ -3,7 +3,11 @@ package com.example.demo.service.Impl;
 import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
+import com.example.demo.model.storeMember;
 import com.example.demo.service.HelperMemberService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,12 +29,23 @@ public class HelperMemberServiceImpl implements HelperMemberService {
 
 
     @Override
-    public HelperMember getHelperMemberByAccount(String account,String password) {
-        HelperMember helperMember=helperMemberDao.getHelperMemberByAccount(account);
-        if(helperMember.getPassword().equals(password)){
-            return helperMember;
-        }else{
-            return null;
-        }
+    public HelperMember getHelperMemberByAccount(String account) {
+        return  helperMemberDao.getHelperMemberByAccount(account);
+
     }
+
+    @Override
+    public HelperMember getHelperMemberByUsername(String username) {
+        return  helperMemberDao.getHelperMemberByUsername(username);
+    }
+
+    @Override
+    public HelperMember getHelperMemberByEmail(String email) {
+        return  helperMemberDao.getHelperMemberByEmail(email);
+    }
+    
+  //oli
+  	public List<HelperMember> findAll() {
+          return helperMemberDao.findAll();
+      }
 }

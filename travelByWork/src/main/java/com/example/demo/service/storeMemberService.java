@@ -58,4 +58,9 @@ public class storeMemberService {
 			return "修改成功";
 	}
 	
+	//oli
+	public List<storeMember> findAllStoreMembers() {
+        return dao.findAll();
+    }
+	
 }

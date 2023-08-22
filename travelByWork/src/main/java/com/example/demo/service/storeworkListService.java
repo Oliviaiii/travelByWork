@@ -19,7 +19,7 @@ public class storeworkListService {
     }
 
     public String addsl(storeworkList sl) {
-        
+        sl.setWorkupdatetime(new Date());
         slDao.save(sl);
         return "新增成功"; 
     }

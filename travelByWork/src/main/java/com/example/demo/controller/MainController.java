@@ -67,9 +67,9 @@ public class MainController {
     public void emailProof(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailProof.html");
     }
-    @RequestMapping(value = "emailProof2")
+    @RequestMapping(value = "emailProofAfter")
     public ModelAndView emailProof2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailProof2.html");
+    	ModelAndView model=new ModelAndView("emailProofAfter.html");
     	return model;
     }
     
@@ -77,9 +77,9 @@ public class MainController {
     public void emailSuccess(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailSuccess.html");
     }
-    @RequestMapping(value = "emailSuccess2")
+    @RequestMapping(value = "emailSuccessAfter")
     public ModelAndView emailSuccess2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailSuccess2.html");
+    	ModelAndView model=new ModelAndView("emailSuccessAfter.html");
     	return model;
     }
     
@@ -108,9 +108,9 @@ public class MainController {
         response.sendRedirect("adminAccount.html"); 
     }
     
-    @RequestMapping(value = "storeAccount2")
+    @RequestMapping(value = "storeAccountAfter")
     public ModelAndView storeAccount2(HttpServletResponse response) throws IOException {
-    	ModelAndView model=new ModelAndView("storeAccount2.html");
+    	ModelAndView model=new ModelAndView("storeAccountAfter.html");
     	return model;
     }
 

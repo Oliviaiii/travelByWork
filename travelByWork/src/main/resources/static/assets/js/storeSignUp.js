@@ -3,12 +3,12 @@
  */
 function storeSignUp(event){
 	event.preventDefault();
-    const storemember = {};
+    let storemember = {};
     storemember.storeName = $("#storename").val();
     storemember.ownerName = $("#ownername").val();
     storemember.account = $("#account").val();
     storemember.password = $("#password").val();
-    storemember.email = $("#email").val();
+    storemember.email = $("#hiddenEmail").val();
     storemember.mobile = $("#mobile").val();
     storemember.phone = $("#phone").val();
     storemember.address = $("#address").val();
@@ -27,7 +27,7 @@ function storeSignUp(event){
 
 function result(data){
     if (data === "新增成功") {
-        window.location.href = "/emailProof2"; 
+        window.location.href = "/emailProof"; 
     } else {
         alert(data); 
     }

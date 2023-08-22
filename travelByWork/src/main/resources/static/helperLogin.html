@@ -54,7 +54,7 @@
             <div class="inner">
                 <h2>打工換宿趣 - 小幫手登入</h2>
                 <!-- Login Form -->
-                <form action="helperAccount" method="post" id="log">
+                <form action="/gethelpermember" method="post" id="log">
                    
                     <input type="text" id="account" name="account" placeholder="帳號" required><br>
 
@@ -75,38 +75,6 @@
             <!-- ... Footer content ... -->
         </footer>
     </div>
-    <script>
-        $("#log").submit(log);
-    function log(evt){
-        evt.preventDefault();
-        var url1="gethelpermember";
-        var obj=new Object();
-        obj.account=$("#account").val();
-        obj.password=$("#password").val();
-        $.ajax({
-            url:"http://localhost:8080/gethelpermember",
-            type:"post",
-            datatype:"html",
-            contentType:"application/json",
-            data:JSON.stringify(obj),
-            success:nextStep,
-            error:function(error){console.log(error)}
-
-
-        })
-
-    }
-    function  nextStep(data,status){
-        var msg=data.toString();
-        if(msg==="true"){
-            console.log(msg)
-            window.location.replace("http://localhost:8080/helperAccount.html")
-        }else{
-            $("#warn").html("<h2 style='color: red'>登入失敗,請確認帳號及密碼</h2>")
-        }
-    }
-
-    </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>

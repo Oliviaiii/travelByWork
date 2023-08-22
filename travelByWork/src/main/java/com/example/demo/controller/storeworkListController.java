@@ -30,9 +30,11 @@ public class storeworkListController {
         return slservice.getAllStoreworkList();
     }
 
-    @PostMapping(value = "/storeAccount2")
+    @PostMapping(value = "/createStoreWork")
     public String addsl(@RequestBody storeworkList sl) {
         return slservice.addsl(sl);
     }
+    
+   
 }
 

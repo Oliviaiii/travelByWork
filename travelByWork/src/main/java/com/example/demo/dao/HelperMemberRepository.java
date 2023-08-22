@@ -1,0 +1,20 @@
+package com.example.demo.dao;
+
+import com.example.demo.model.HelperMember;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
+public interface HelperMemberRepository extends JpaRepository<HelperMember,Integer> {
+    HelperMember findHelperMemberByAccount(String account);
+
+    HelperMember findHelperMemberByUsername(String username);
+
+    HelperMember findHelperMemberByEmail(String email);
+    
+    List<HelperMember> findAll();
+
+
+}

@@ -1,6 +1,6 @@
 package com.example.demo.dao.Impl;
 
-import com.example.demo.HelperMemberRepository;
+import com.example.demo.dao.HelperMemberRepository;
 import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
@@ -47,4 +47,29 @@ public class HelperMemberDaoImpl implements HelperMemberDao {
             return null;
         }
     }
+
+    @Override
+    public HelperMember getHelperMemberByUsername(String username) {
+        HelperMember helperMember = helperMemberRepository.findHelperMemberByUsername(username);
+        if (helperMember != null) {
+            return helperMember;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public HelperMember getHelperMemberByEmail(String email) {
+        HelperMember helperMember = helperMemberRepository.findHelperMemberByEmail(email);
+        if (helperMember != null) {
+            return helperMember;
+        } else {
+            return null;
+        }
+    }
+
+    //oli
+	public List<HelperMember> findAll() {
+		return helperMemberRepository.findAll();
+	}
 }

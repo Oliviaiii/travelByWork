@@ -22,12 +22,13 @@ public class HelperMember implements Serializable{
     private String birth;
     private String sexual;
     private Date createtime;
+    private String role;
 
 
     public HelperMember() {
     }
 
-    public HelperMember(Integer helpermemberid, String username, String name, String account, String password, String email, String mobile, String country, String birth, String sexual, Date createtime) {
+    public HelperMember(Integer helpermemberid, String username, String name, String account, String password, String email, String mobile, String country, String birth, String sexual, Date createtime, String role) {
         this.helpermemberid = helpermemberid;
         this.username = username;
         this.name = name;
@@ -39,6 +40,7 @@ public class HelperMember implements Serializable{
         this.birth = birth;
         this.sexual = sexual;
         this.createtime = createtime;
+        this.role = role;
     }
 
     public Integer getHelpermemberid() {
@@ -128,6 +130,13 @@ public class HelperMember implements Serializable{
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
     }
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     @Override
     public String toString() {
@@ -143,6 +152,7 @@ public class HelperMember implements Serializable{
                 ", birth='" + birth + '\'' +
                 ", sexual='" + sexual + '\'' +
                 ", createtime=" + createtime +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

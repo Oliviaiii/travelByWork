@@ -12,4 +12,12 @@ public interface HelperMemberDao {
     Object updateHelperMember(UpdateConfig updateConfig);
 
     HelperMember getHelperMemberByAccount(String account);
+
+    HelperMember getHelperMemberByUsername(String username);
+
+    HelperMember getHelperMemberByEmail(String email);
+
+    
+    //oli
+	List<HelperMember> findAll();
 }

@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,17 @@ public class storeworkList {
 	private String meals;
 	private String money;
 	private String workbonus;
+	private Integer storememberid;
+	@Column(name="storename")
+	private String storeName;
+	@Column(name="ownername")
+	private String ownerName;
+	private String email;
+	private String mobile;
+	private String phone;
+	private String address;
+	
+	
 	public storeworkList() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -41,7 +53,8 @@ public class storeworkList {
 	public storeworkList(Integer storeworklistid, String location, Date workupdatetime, String workage,
 			String worksexual, String howtoapply, String others, String changedatebegin, String changedateeend,
 			String aleastdays, String breaktime, String workhours, String atwhattime, String workdetails,
-			String scooters, String meals, String money, String workbonus) {
+			String scooters, String meals, String money, String workbonus, Integer storememberid, String storeName,
+			String ownerName, String email, String mobile, String phone, String address) {
 		super();
 		this.storeworklistid = storeworklistid;
 		this.location = location;
@@ -61,7 +74,57 @@ public class storeworkList {
 		this.meals = meals;
 		this.money = money;
 		this.workbonus = workbonus;
+		this.storememberid = storememberid;
+		this.storeName = storeName;
+		this.ownerName = ownerName;
+		this.email = email;
+		this.mobile = mobile;
+		this.phone = phone;
+		this.address = address;
 	}
+	public Integer getStorememberid() {
+		return storememberid;
+	}
+	public void setStorememberid(Integer storememberid) {
+		this.storememberid = storememberid;
+	}
+	public String getStoreName() {
+		return storeName;
+	}
+	public void setStoreName(String storeName) {
+		this.storeName = storeName;
+	}
+	public String getOwnerName() {
+		return ownerName;
+	}
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMobile() {
+		return mobile;
+	}
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	public Integer getStoreworklistid() {
 		return storeworklistid;
 	}
@@ -177,7 +240,9 @@ public class storeworkList {
 				+ ", others=" + others + ", changedatebegin=" + changedatebegin + ", changedateeend=" + changedateeend
 				+ ", aleastdays=" + aleastdays + ", breaktime=" + breaktime + ", workhours=" + workhours
 				+ ", atwhattime=" + atwhattime + ", workdetails=" + workdetails + ", scooters=" + scooters + ", meals="
-				+ meals + ", money=" + money + ", workbonus=" + workbonus + "]";
+				+ meals + ", money=" + money + ", workbonus=" + workbonus + ", storememberid=" + storememberid
+				+ ", storeName=" + storeName + ", ownerName=" + ownerName + ", email=" + email + ", mobile=" + mobile
+				+ ", phone=" + phone + ", address=" + address + "]";
 	}
 	
 	

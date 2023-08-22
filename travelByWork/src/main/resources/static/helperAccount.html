@@ -250,7 +250,7 @@
 						$("#saveButton").click(update)
 						function getSession() {
 							$.ajax({
-								url: 'http://localhost:8080/getSession',
+								url: '/getSession',
 								type: 'get',
 								datatype: 'json',
 								success:setSession,
@@ -271,6 +271,10 @@
 							document.getElementById('country').value=data.country;
 							document.getElementById('mobile').value=data.mobile;
 							document.getElementById('createtime').value=data.createtime;
+							//心得分享用
+							document.getElementById('usernameAddForm').value=data.username;
+							document.getElementById('memberIdAddForm').value=data.helpermemberid;
+							document.getElementById('accountAddForm').value=data.account;
 						}
 
 						function  update(){
@@ -280,7 +284,7 @@
 							obj.username=$("#username").val();
 							obj.mobile=$("#mobile").val();
 							$.ajax({
-								url:"http://localhost:8080/updatehelpermember",
+								url:"/updatehelpermember",
 								type:"put",
 								datetype:"text",
 								contentType:"application/json",
@@ -378,8 +382,10 @@
 										<div class="row">
 
 											<div class="col-6 col-12-medium">
-												<input type="text" name="username" value="" placeholder="暱稱" readonly/>
+												<input type="text"  id="usernameAddForm" name="username" value="" placeholder="暱稱" readonly/>
 											</div>
+											<input type="hidden" id="accountAddForm">
+											<input type="hidden" id="memberIdAddForm">
 
 											<div class="col-6 col-12-medium">
 												<select name="worktype" id="worktype" required>

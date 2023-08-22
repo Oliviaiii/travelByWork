@@ -24,7 +24,7 @@ function storeLogin(event){
 function result(data){
     if (data === "登入成功") {
 		alert(data);
-        window.location.href = "/storeAccount2"; 
+        window.location.href = "/storeAccountAfter"; 
     } else {
         alert(data); 
     }

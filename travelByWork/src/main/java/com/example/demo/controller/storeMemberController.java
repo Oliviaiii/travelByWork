@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.model.helperShare;
 import com.example.demo.model.storeMember;
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.service.storeMemberService;
@@ -45,6 +46,10 @@ public class storeMemberController {
 		session.setAttribute("storeMember", member);
 		return service.UpdateStoreData(member);
 	}
-	
+
+	@GetMapping("/getStoreMember")
+	public List<storeMember> findAllStoreMembers() {
+        return dao.findAll();
+    }
 	
 }

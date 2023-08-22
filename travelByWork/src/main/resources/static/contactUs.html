@@ -67,11 +67,14 @@
 											</div>
 											<div class="col-12">
 												<select name="demo-category" id="demo-category">
-													<option value="">- 問題內容 -</option>
-													<option value="1">檢舉店家職缺</option>
-													<option value="1">檢舉心得分享</option>
-													<option value="1">意見分享</option>
-													<option value="1">給予我們鼓勵</option>
+													<option value="" disabled selected hidden>*請選擇檢舉內容</option>
+													<optgroup label="--問題內容--">
+													<option value="檢舉店家職缺">檢舉店家職缺</option>
+													<option value="檢舉心得分享">檢舉心得分享</option>
+													<option value="意見分享">意見分享</option>
+													<option value="給予我們鼓勵">給予我們鼓勵</option>
+													<option value="其他">其他</option>
+													
 												</select>
 											</div>
 											
@@ -79,10 +82,12 @@
 												<input type="checkbox" id="demo-copy" name="demo-copy">
 												<label for="demo-copy">傳送一封副本給我</label>
 											</div>
+
 											<div class="col-6 col-12-small">
 												<input type="checkbox" id="demo-human" name="demo-human" checked>
 												<label for="demo-human">我不是機器人</label>
 											</div>
+
 											<div class="col-12">
 												<textarea name="demo-message" id="demo-message" placeholder="輸入內容" rows="6"></textarea>
 											</div>

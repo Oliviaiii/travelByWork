@@ -60,7 +60,7 @@
 								<section>
 									<h4>輸入註冊基料</h4>
 									
-									<form method="post" action="emailProof">
+									<form method="post" action="emailProof" id="storeSignUpForm">
 										<div class="row.aln-center"> 
 
 								
@@ -76,8 +76,10 @@
 											</div>
 
 											<div class="col-6 col-12-xsmall">
-											<input type="password" name="password" id="password" value="" placeholder="密碼（至少1個大寫，長度至少6個字元）" 
-											pattern="^(?=.*[A-Z]).{6,}$" title="請輸入至少1個大寫字母，長度至少6個字元的密碼" required /> <br>
+  											  <input type="password" name="password" id="password" value="" placeholder="密碼（至少1個大寫，長度至少6個字元）" 
+  											      pattern="^(?=.*[A-Z]).{6,}$" title="請輸入至少1個大寫字母，長度至少6個字元的密碼" required />
+  											  <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+  											  <label for="showPassword">顯示密碼</label>
 											</div>
 
 											<div class="col-6 col-12-xsmall">
@@ -94,8 +96,9 @@
 											
 					
 											<div class="col-6 col-12-xsmall">
-												<input type="text" name="mobile" id="mobile" value="" placeholder="手機號碼" required/>  <br>
+												<input type="text" name="mobile" id="mobile" value="" placeholder="手機號碼" required pattern="09\d{8}"/> <br>
 											</div>
+											
 
 											<div class="col-6 col-12-xsmall">
 												<input type="text" name="phone" id="phone" value="" placeholder="店內電話號碼（選填）" />  <br>
@@ -141,6 +144,16 @@
 										passwordMismatchError.textContent = '密碼不相符';
 										}
 										});
+
+										//可看見密碼
+										function togglePasswordVisibility() {
+  										  var passwordInput = document.getElementById('password');
+   										 if (passwordInput.type === 'password') {
+  										      passwordInput.type = 'text';
+  										  } else {
+   										     passwordInput.type = 'password';
+  										  }
+										}
 										
    										</script>
 
