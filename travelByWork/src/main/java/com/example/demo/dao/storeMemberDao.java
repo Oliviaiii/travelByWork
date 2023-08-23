@@ -15,5 +15,7 @@ public interface storeMemberDao extends JpaRepository<storeMember,Integer>{
 	public boolean existsByStoreName(String name);
 	public boolean existsByMobile(String mobile);
 	public storeMember findByAccountAndPassword(String account,String password);
+	storeMember findStoreMemberByAccount(String account);
+	storeMember findStoreMemberByEmail(String email);
 }
 

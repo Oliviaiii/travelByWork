@@ -1,8 +1,8 @@
 package com.example.demo.config;
 
-import com.example.demo.dao.HelperMemberRepository;
-import com.example.demo.dto.AccountConfig;
-import com.example.demo.model.HelperMember;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,49 +16,64 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.storeMemberDao;
+import com.example.demo.model.HelperMember;
+import com.example.demo.model.storeMember;
+
+
 
 @Component
 public class LoginAuthentication implements AuthenticationProvider {
-    @Autowired
-    private HelperMemberRepository helperMemberRepository;
+	@Autowired
+	private HelperMemberRepository helperMemberRepository;
 
-    @Autowired
-    private PasswordEncoder encoder;
+	@Autowired
+	private storeMemberDao dao;
 
-    private static final Logger log=LoggerFactory.getLogger(LoginAuthentication.class);
+	@Autowired
+	private PasswordEncoder encoder;
 
+	private static final Logger log = LoggerFactory.getLogger(LoginAuthentication.class);
 
-    @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+	@Override
+	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
-            String account = authentication.getName();
-            String pwd = authentication.getCredentials().toString();
-            HelperMember helperMember = helperMemberRepository.findHelperMemberByAccount(account);
-            if (helperMember != null) {
-                if (encoder.matches(pwd, helperMember.getPassword())) {
-                    log.warn("failure in step2");
-                    List<GrantedAuthority> authorities = new ArrayList<>();
-                    authorities.add(new SimpleGrantedAuthority(helperMember.getRole()));
-                    log.warn("failure in step3");
-                    return new UsernamePasswordAuthenticationToken(account, pwd, authorities);
-                } else {
-                    log.warn("failure In step4");
-                    throw new BadCredentialsException("Invalid password!");
-                }
-            } else {
-                log.warn("failure in step5");
-                throw new BadCredentialsException("No user registered with this details!");
-            }
+		String account = authentication.getName();
+		String pwd = authentication.getCredentials().toString();
+		HelperMember helperMember = helperMemberRepository.findHelperMemberByAccount(account);
+		storeMember storeMember = dao.findStoreMemberByAccount(account);
+		if (helperMember != null) {
+			if (encoder.matches(pwd, helperMember.getPassword())) {
+				log.warn("failure in step2");
+				List<GrantedAuthority> authorities = new ArrayList<>();
+				authorities.add(new SimpleGrantedAuthority(helperMember.getRole()));
+				log.warn("failure in step3");
+				return new UsernamePasswordAuthenticationToken(account, pwd, authorities);
+			} else {
+				log.warn("failure In step4");
+				throw new BadCredentialsException("Invalid password!");
+			}
+		} else if (storeMember != null) {
+			if (encoder.matches(pwd, storeMember.getPassword())) {
+				log.warn("failure in step2");
+				List<GrantedAuthority> authorities = new ArrayList<>();
+				authorities.add(new SimpleGrantedAuthority(storeMember.getRole()));
+				log.warn("failure in step3");
+				return new UsernamePasswordAuthenticationToken(account, pwd, authorities);
+			} else {
+				log.warn("failure In step4");
+				throw new BadCredentialsException("Invalid password!");
+			}
 
-    }
+		} else {
+			log.warn("failure in step5");
+			throw new BadCredentialsException("No user registered with this details!");
+		}
+	}
 
-
-
-    @Override
-    public boolean supports(Class<?> authentication) {
-        return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
-    }
+	@Override
+	public boolean supports(Class<?> authentication) {
+		return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
+	}
 }

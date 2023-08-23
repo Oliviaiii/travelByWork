@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- logo -->
 		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
+	<!--google login-->	
+	<script src="https://accounts.google.com/gsi/client" async></script>
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade">
    <style>
     /* Center the form vertically and horizontally */
     #banner {
@@ -69,12 +72,49 @@
                 <p><a href="helperSignUp">加入成為小幫手</a></p>
             </div>
             <div id="warn"></div>
+                <!-- google login -->
+            <div id="g_id_onload"
+			     data-client_id="434464664204-cetsfgkph3boq8i65d4vb4sbhmf7cqrl.apps.googleusercontent.com"
+			     data-context="signin"
+			     data-ux_mode="popup"
+			     data-callback="onSignIn"
+			     data-nonce=""
+			     data-auto_prompt="false">
+			</div>	
+			<!-- google login圖案樣式 -->
+			<div class="g_id_signin"
+			     data-type="standard"
+			     data-shape="pill"
+			     data-theme="outline"
+			     data-text="signin_with"
+			     data-size="medium"
+			     data-logo_alignment="left">
+			</div>
         </section>
         <!-- ... Rest of the content ... -->
         <footer id="footer">
             <!-- ... Footer content ... -->
         </footer>
     </div>
+    <script>
+		$('#log').submit(login);
+		function  login(evt){
+			evt.preventDefault();
+			var obj=new Object();
+			obj.account=$('#account').val();
+			obj.password=$('#password').val()
+			$.ajax({
+				url:"/gethelpermember",
+				type:'post',
+				datatype:'json',
+				contentType:'application/json',
+				data:JSON.stringify(obj),
+				success:function(){window.location.replace("/LoginKapcha.html")},
+				error:function (){$('#warn').html("<h3 style='color: red'>登入失敗,請檢查帳號和密碼是否正確</h3>");
+					setTimeout(function(){$('#warn').html("")},1500)}
+			})
+		}
+	</script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -82,5 +122,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/helperGoogleLogin.js"></script>
 </body>
 </html>

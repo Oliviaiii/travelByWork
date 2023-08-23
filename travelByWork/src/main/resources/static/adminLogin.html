@@ -55,16 +55,18 @@
             <div class="inner">
                 <h2>後台管理登入</h2>
                 <!-- Login Form -->
-                <form id="" action="adminAccount" method="post">
+                <form id="adminLoginForm" action="adminAccount" method="post">
                    
                     <input type="text" id="account" name="account" placeholder="帳號" required><br>
 
                     
                     <input type="password" id="password" name="password" placeholder="密碼" required><br>
+                    <div id="error-message" style="color: red;"></div>
 
                     <input type="submit" value="登入" style="font-size: 14px;">
                 </form>
-                
+
+
             </div>
         </section>
         <!-- ... Rest of the content ... -->
@@ -79,6 +81,6 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/storeLogin.js"></script>
+    <script src="assets3/js/adminLogin.js"></script>
 </body>
 </html>

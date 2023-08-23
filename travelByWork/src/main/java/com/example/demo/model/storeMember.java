@@ -1,15 +1,11 @@
 package com.example.demo.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="storemember")
@@ -30,12 +26,13 @@ public class storeMember {
 	private String address;
 	@Column(name="createtime")
 	private String createTime;
+	private String role;
 	
 
 	public storeMember() {}
-	public storeMember(String storeName, String ownerName, String account, String password, String email, String mobile,
-			String phone, String address,String createTime) {
-		super();
+
+	public storeMember(Integer storememberid, String storeName, String ownerName, String account, String password, String email, String mobile, String phone, String address, String createTime, String role) {
+		this.storememberid = storememberid;
 		this.storeName = storeName;
 		this.ownerName = ownerName;
 		this.account = account;
@@ -44,9 +41,10 @@ public class storeMember {
 		this.mobile = mobile;
 		this.phone = phone;
 		this.address = address;
-		this.createTime=createTime;
+		this.createTime = createTime;
+		this.role = role;
 	}
-	
+
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -107,11 +105,29 @@ public class storeMember {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "storeMember [storememberid=" + storememberid + ", storeName=" + storeName + ", ownerName=" + ownerName + ", account="
-				+ account + ", password=" + password + ", email=" + email + ", mobile=" + mobile + ", phone=" + phone
-				+ ", address=" + address + ", createTime=" + createTime + "]";
+		return "storeMember{" +
+				"storememberid=" + storememberid +
+				", storeName='" + storeName + '\'' +
+				", ownerName='" + ownerName + '\'' +
+				", account='" + account + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				", mobile='" + mobile + '\'' +
+				", phone='" + phone + '\'' +
+				", address='" + address + '\'' +
+				", createTime='" + createTime + '\'' +
+				", role='" + role + '\'' +
+				'}';
 	}
-	
 }

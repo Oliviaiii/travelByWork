@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>後台-新增員工</title>
+		<title>新增員工</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets3/css/main.css" />
@@ -49,15 +49,14 @@
 								<header>
 									<h2>新增員工</h2>
 									<!-- 顯示當日日期 -->
-									<span class="date" id="currentDateTime">April 25, 2017</span>
-								</header>
+									<span class="date" id="currentDateTime">April 25, 2017</span>								</header>
 								<div>
 												<!-- <div class="row"> -->
 													<div class="col-6 col-12-medium">
 													<div class="align-center ">
 											<section>
 												
-												<form method="post" action="" id="login">
+												<form method="post" action="/adminsignup" id="adminSignUpForm">
 													<div class="row.aln-center"> 
 			
 														<div class="col-6 col-12-xsmall">
@@ -121,7 +120,7 @@
 								// 格式化 YYYY-MM-DD
 								const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`;
 
-								// 填到 createtime 輸入匡
+								// 填到 createtime 输入框
 								document.getElementById('createtime').value = formattedDate;
 
 								//判斷密碼
@@ -164,6 +163,7 @@
 			<script src="assets3/js/util.js"></script>
 			<script src="assets3/js/main.js"></script>
 			<script src="assets3/js/updateTime.js"></script>
+			<script src="assets3/js/adminSignUp.js"></script>
 
 	</body>
 </html>

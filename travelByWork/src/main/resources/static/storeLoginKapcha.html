@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<body>
+<h2>驗證碼驗證</h2>
+<form action="klogin" method="post" id="send">
+    <input type="text" name="verifycode" id="verifycode" placeholder="請輸入驗證碼" required="true">
+    <p>
+        <img id="verifyImage" alt="點擊圖片刷新" src="loginconfirm" />
+    </p>
+    <p>
+        <button id="refresh">點擊刷新驗證碼</button>
+    </p>
+    <br/>
+    <div id="fail"></div>
+    <button type="submit">送出</button>
+</form>
+<script>
+    $("#send").submit(verify);
+    $("#refresh").click(refreshImage);
+    function verify(evt){
+        evt.preventDefault();
+        var obj=new Object();
+        obj.verifyCode=$("#verifycode").val();
+        $.ajax({
+            url:"/klogin",
+            type:'post',
+            datatype:'json',
+            contentType:'application/json',
+            data:JSON.stringify(obj),
+            success:redirect,
+            error:function(error){console.log(error)}
+
+        })
+    }
+    function redirect(data){
+        var result=data.toString();
+        console.log(result);
+        if(result==='success'){
+            window.location.replace("storeAccountAfter.html")
+        }else{
+            setTimeout(function(){$("#fail").html("")},1500);
+            $("#fail").html("<h2 style='color: red'>驗證碼錯誤,請檢查過後並重新輸入</h2>")
+            $("#verifyImage").attr('src','loginconfirm?d'+new Date()*1);
+
+        }
+    }
+    function refreshImage(){
+        var refresh=$("#verifyImage");
+        refresh.attr('src','loginconfirm?d'+new Date()*1);
+    }
+</script>
+</body>
+</html>

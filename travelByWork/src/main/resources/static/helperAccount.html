@@ -247,7 +247,19 @@
 					
 					<script>
 						$(document).ready(getSession)
+						$(document).ready(getGoogleSession)
 						$("#saveButton").click(update)
+						function getGoogleSession() {
+							$.ajax({
+								url: '/getGoogleSession',
+								type: 'get',
+								datatype: 'json',
+								success:setSession,
+								error: function (error) {
+									console.log(error)
+								}
+							})
+						}
 						function getSession() {
 							$.ajax({
 								url: '/getSession',
@@ -276,7 +288,7 @@
 							document.getElementById('memberIdAddForm').value=data.helpermemberid;
 							document.getElementById('accountAddForm').value=data.account;
 						}
-
+	
 						function  update(){
 							var obj=new Object();
 							obj.helpermemberid=$("#helpermemberid").val();

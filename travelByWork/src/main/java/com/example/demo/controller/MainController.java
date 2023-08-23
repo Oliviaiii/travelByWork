@@ -38,6 +38,11 @@ public class MainController {
         response.sendRedirect("storeLogin.html");
     }
 
+     @RequestMapping("adminLogin")
+    public void adminLogin(HttpServletResponse response) throws IOException {
+        response.sendRedirect("adminLogin.html");
+    }
+
     @RequestMapping("postJob")
     public void postJob(HttpServletResponse response) throws IOException {
         response.sendRedirect("postJob.html");
@@ -67,9 +72,9 @@ public class MainController {
     public void emailProof(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailProof.html");
     }
-    @RequestMapping(value = "emailProofAfter")
+    @RequestMapping(value = "emailProof2")
     public ModelAndView emailProof2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailProofAfter.html");
+    	ModelAndView model=new ModelAndView("emailProof2.html");
     	return model;
     }
     
@@ -77,9 +82,9 @@ public class MainController {
     public void emailSuccess(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailSuccess.html");
     }
-    @RequestMapping(value = "emailSuccessAfter")
+    @RequestMapping(value = "emailSuccess2")
     public ModelAndView emailSuccess2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailSuccessAfter.html");
+    	ModelAndView model=new ModelAndView("emailSuccess2.html");
     	return model;
     }
     
@@ -108,9 +113,15 @@ public class MainController {
         response.sendRedirect("adminAccount.html"); 
     }
     
-    @RequestMapping(value = "storeAccountAfter")
+    @RequestMapping(value = "storeAccount2")
     public ModelAndView storeAccount2(HttpServletResponse response) throws IOException {
-    	ModelAndView model=new ModelAndView("storeAccountAfter.html");
+    	ModelAndView model=new ModelAndView("storeAccount2.html");
+    	return model;
+    }
+    
+    @RequestMapping(value = "adminAccount2")
+    public ModelAndView adminAccount2(HttpServletResponse response) throws IOException {
+    	ModelAndView model=new ModelAndView("adminAccount2.html");
     	return model;
     }
 

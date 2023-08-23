@@ -5,6 +5,7 @@
     <title>打工換宿趣 - 店家登入</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <link rel="stylesheet" href="assets/css/main.css" />
     <!-- logo -->
 		<link rel="icon" type="images/jpeg" href="images/logo.jpg" /> 
@@ -69,12 +70,32 @@
                 <br>
                 <p><a href="storeSignUp">加入成為店家</a></p>
             </div>
+            <div id="warn"></div>
         </section>
         <!-- ... Rest of the content ... -->
         <footer id="footer">
             <!-- ... Footer content ... -->
         </footer>
     </div>
+    <script>
+        $('#loginForm').submit(login);
+        function  login(evt){
+            evt.preventDefault();
+            var obj=new Object();
+            obj.account=$('#account').val();
+            obj.password=$('#password').val()
+            $.ajax({
+                url:"/gethelpermember",
+                type:'post',
+                datatype:'json',
+                contentType:'application/json',
+                data:JSON.stringify(obj),
+                success:function(){window.location.replace("/storeLoginKapcha.html")},
+                error:function (){$('#warn').html("<h3 style='color: red'>登入失敗,請檢查帳號和密碼是否正確</h3>");
+                    setTimeout(function(){$('#warn').html("")},1500)}
+            })
+        }
+    </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
     <script src="assets/js/jquery.scrolly.min.js"></script>
@@ -82,6 +103,5 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/storeLogin.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@
 		<title>商家註冊</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<!-- logo -->
@@ -190,6 +191,48 @@
 			</div>
 
 		<!-- Scripts -->
+		<script>
+    $("#storeSignUpForm").submit(send);
+
+    function send(evt){
+        evt.preventDefault();
+        var obj=new Object();
+        obj.storename=$("#storename").val();
+        obj.ownername=$("#ownername").val();
+        obj.account=$("#account").val();
+        obj.password=$("#password").val();
+        obj.email=$("#hiddenEmail").val();
+        obj.address=$("#address").val();
+        obj.mobile=$("#mobile").val();
+        obj.phone=$("#phone").val();
+        obj.createtime=$("#createtime").val();
+        obj.role='ROLE_ADMIN'
+        $.ajax({
+            url:"/createstoresession",
+            type:"post",
+            contentType:"application/json",
+            datatype:"json",
+            data:JSON.stringify(obj),
+            success:checkValue,
+            error:function (error){
+                console.log(error)
+            }
+        })
+
+    }
+    function checkValue(data){
+        $("#failaccount").html("");
+        $("#failemail").html("");
+        var message=data.toString();
+        if (message==="account"){
+            $("#failaccount").html("<h4 style='color: red'>帳號不可重複,請重新輸入<h4>");
+        }else if (message==="email"){
+            $("#failemail").html("<h4 style='color: red'>信箱不可重複,請重新輸入<h4>");
+        }else{
+            window.location.replace('/storeEmailProof.html');
+        }
+    }
+</script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -197,6 +240,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/storeSignUp.js"></script>
 	</body>
 </html>

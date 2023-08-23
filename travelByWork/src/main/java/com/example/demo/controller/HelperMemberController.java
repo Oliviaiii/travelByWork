@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.HelperMemberDao;
+import com.example.demo.dao.HelperMemberRepository;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
+import com.example.demo.model.storeMember;
 import com.example.demo.service.HelperMemberService;
+import com.example.demo.service.storeMemberService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpStatus;
@@ -29,7 +33,11 @@ public class HelperMemberController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private HelperMemberService helperMemberService;
-
+    @Autowired
+    private HelperMemberRepository repository;
+    @Autowired
+    private storeMemberService service;
+    
     @PostMapping("/gethelpermember")
     public void getHelperMember(@RequestBody AccountConfig accountConfig) {
 
@@ -39,6 +47,7 @@ public class HelperMemberController {
         HelperMember h1=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
         HelperMember h2=helperMemberService.getHelperMemberByUsername(helperMember.getUsername());
         HelperMember h3=helperMemberService.getHelperMemberByEmail(helperMember.getEmail());
+        storeMember s1=service.findStoreMemberByAccount(helperMember.getAccount());
         if(h1!=null) {
             return  ResponseEntity.status(HttpStatus.OK).body("account");
         }
@@ -47,7 +56,10 @@ public class HelperMemberController {
         }
         else if(h3!=null) {
             return  ResponseEntity.status(HttpStatus.OK).body("email");
-        }else{
+        }else if(s1!=null){
+            return  ResponseEntity.status(HttpStatus.OK).body("account");
+        }
+        else{
             String pwd = passwordEncoder.encode(helperMember.getPassword());
             helperMember.setPassword(pwd);
             session.setAttribute("sign", helperMember);
@@ -93,4 +105,24 @@ public class HelperMemberController {
     public List<HelperMember> getHelperMembers() {
         return helperMemberService.findAll();
     }
+    @PostMapping("/googleLogin")
+    public String googlelogin(@RequestBody HelperMember helperMember,HttpSession session) {
+    	HelperMember member=repository.findByAccount(helperMember.getAccount());
+    	if(member==null) {
+    		helperMemberService.createHelperMember(helperMember);
+    		session.setAttribute("user",repository.findByAccount(helperMember.getAccount()));
+            session.setMaxInactiveInterval(60);
+        	return "成功";
+    	}else {
+    		session.setAttribute("user",member);
+            session.setMaxInactiveInterval(60);
+    		return "成功";
+    	}
+    }
+    @GetMapping("/getGoogleSession")
+    public ResponseEntity<Object> getGoogleSession(HttpSession session) {
+        HelperMember helperMember=(HelperMember) session.getAttribute("user");
+        return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+    }
+
 }

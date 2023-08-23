@@ -7,16 +7,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.model.helperShare;
+import com.example.demo.model.HelperMember;
 import com.example.demo.model.storeMember;
+import com.example.demo.dao.HelperMemberRepository;
 import com.example.demo.dao.storeMemberDao;
+import com.example.demo.dto.StoreUpdateConfig;
 import com.example.demo.service.storeMemberService;
 
 @RestController
@@ -26,7 +34,10 @@ public class storeMemberController {
 	private storeMemberDao dao;	
 	@Autowired
 	private storeMemberService service;
-	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
+	@Autowired
+    private HelperMemberRepository helperMemberRepository;
 	
 	//註冊資料加入資料庫
 	@PostMapping("/storesignup")			
@@ -51,5 +62,48 @@ public class storeMemberController {
 	public List<storeMember> findAllStoreMembers() {
         return dao.findAll();
     }
-	
+	@PutMapping("/updatestoremember")
+    public ResponseEntity<Object> updateHelperMember(@RequestBody StoreUpdateConfig updateConfig) {
+        Object member = service.updateStoreMember(updateConfig);
+        if (member.getClass().equals(String.class)) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("查無資料");
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body("更新成功");
+        }
+    }
+
+    @PostMapping("/createstoresession")
+    public ResponseEntity<String> createsession(@RequestBody storeMember member, HttpSession session) {
+        storeMember s1 = service.findStoreMemberByAccount(member.getAccount());
+        HelperMember h1 = helperMemberRepository.findHelperMemberByAccount(member.getAccount());
+        storeMember s2 = service.findStoreMemberByEmail(member.getEmail());
+        if (s1 != null) {
+            return ResponseEntity.status(HttpStatus.OK).body("account");
+        } else if (s2 != null) {
+            return ResponseEntity.status(HttpStatus.OK).body("email");
+        } else if (h1 != null) {
+            return ResponseEntity.status(HttpStatus.OK).body("account");
+        } else {
+            String pwd = passwordEncoder.encode(member.getPassword());
+            member.setPassword(pwd);
+            session.setAttribute("storesign", member);
+            Object storeMember = session.getAttribute("storesign");
+            System.out.println(storeMember);
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }
+    }
+
+    @GetMapping("/getStore")
+    public ResponseEntity<Object> getSession(HttpSession session) {
+        String securityContext = SecurityContextHolder.getContext().getAuthentication().getName();
+        storeMember member = service.findStoreMemberByAccount(securityContext);
+        return ResponseEntity.status(HttpStatus.OK).body(member);
+    }
+
+    @GetMapping("/getCreateStore")
+    public ResponseEntity<Object> getCreateSession(HttpSession session) {
+        Object storeMember = session.getAttribute("storesign");
+        System.out.println(storeMember);
+        return ResponseEntity.status(HttpStatus.OK).body(storeMember);
+    }
 }

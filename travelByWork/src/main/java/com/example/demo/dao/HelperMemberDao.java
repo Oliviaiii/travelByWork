@@ -1,23 +1,22 @@
 package com.example.demo.dao;
 
+import java.util.List;
+
 import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
 
-import java.util.List;
-
 public interface HelperMemberDao {
 
-    Integer createHelperMember(HelperMember helperMember);
+	Integer createHelperMember(HelperMember helperMember);
 
-    Object updateHelperMember(UpdateConfig updateConfig);
+	Object updateHelperMember(UpdateConfig updateConfig);
 
-    HelperMember getHelperMemberByAccount(String account);
+	HelperMember getHelperMemberByAccount(String account);
 
-    HelperMember getHelperMemberByUsername(String username);
+	HelperMember getHelperMemberByUsername(String username);
 
-    HelperMember getHelperMemberByEmail(String email);
+	HelperMember getHelperMemberByEmail(String email);
 
-    
-    //oli
+	// oli
 	List<HelperMember> findAll();
 }
