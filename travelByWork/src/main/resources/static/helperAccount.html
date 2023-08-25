@@ -61,7 +61,8 @@
 							<header>
 								<h1>基本資料</h1>
 								<p>修改之後記得保存</p>
-								<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" style="max-width: 100%; max-height: 100%;"/>
+								<!--<img src="https://i.imgur.com/kB34yEq.jpg" alt="烏龜" style="max-width: 100%; max-height: 100%;"/>-->
+								<img id="myphoto" alt="請上傳大頭貼" style="max-width: 100%; max-height: 100%;"/>
 							</header>
 							<form id="userForm" action="#" method="post">
 								<div>
@@ -151,12 +152,12 @@
 									</div>
 								
 									<button id="editButton" type="button">修改基本資料</button>
-
+								
 									<button id="saveButton" type="button" style="display: none;">保存資料</button>
 									<br><br>
 								</div>
 							</form>
-
+							<button id="logout" type="button">登出</button>
 							
 
 						</article>
@@ -216,7 +217,7 @@
 						<div>
 							<div class="row">
 								<div class="col-6 col-12-medium">
-									<input type="text" name="helperphoto" placeholder="上傳大頭貼" />
+									<input type="text" id="helperphoto" name="helperphoto" placeholder="上傳大頭貼" />
 								</div>
 
 								<p> </p>
@@ -227,7 +228,7 @@
 								
 
 								<div class="col-6 col-12-medium">
-									<input type="text" name="helpercvlink" placeholder="上傳履歷" />
+									<input type="text" id="helpercvlink" name="helpercvlink" placeholder="上傳履歷" />
 								</div>
 
 								<p> </p>
@@ -246,20 +247,10 @@
 					</article>
 					
 					<script>
+						$("#logout").click(logout)
 						$(document).ready(getSession)
 						$(document).ready(getGoogleSession)
 						$("#saveButton").click(update)
-						function getGoogleSession() {
-							$.ajax({
-								url: '/getGoogleSession',
-								type: 'get',
-								datatype: 'json',
-								success:setSession,
-								error: function (error) {
-									console.log(error)
-								}
-							})
-						}
 						function getSession() {
 							$.ajax({
 								url: '/getSession',
@@ -271,24 +262,35 @@
 								}
 							})
 						}
-						function setSession(data){
-							document.getElementById('helpermemberid').value=data.helpermemberid;
-							document.getElementById('account').value=data.account;
-							document.getElementById('password').value=data.password;
-							document.getElementById('username').value=data.username;
-							document.getElementById('name').value=data.name;
-							document.getElementById('birth').value=data.birth;
-							document.getElementById('sexual').value=data.sexual;
-							document.getElementById('email').value=data.email;
-							document.getElementById('country').value=data.country;
-							document.getElementById('mobile').value=data.mobile;
-							document.getElementById('createtime').value=data.createtime;
-							//心得分享用
-							document.getElementById('usernameAddForm').value=data.username;
-							document.getElementById('memberIdAddForm').value=data.helpermemberid;
-							document.getElementById('accountAddForm').value=data.account;
+						function getGoogleSession() {
+							$.ajax({
+								url: '/getGoogleSession',
+								type: 'get',
+								datatype: 'json',
+								success:setSession,
+								error: function (error) {
+									console.log(error)
+								}
+							})
 						}
-	
+						function setSession(data){
+							document.getElementById('helpermemberid').value=data.helperMember.helpermemberid;
+							document.getElementById('account').value=data.helperMember.account;
+							document.getElementById('password').value=data.helperMember.password;
+							document.getElementById('username').value=data.helperMember.username;
+							document.getElementById('name').value=data.helperMember.name;
+							document.getElementById('birth').value=data.helperMember.birth;
+							document.getElementById('sexual').value=data.helperMember.sexual;
+							document.getElementById('email').value=data.helperMember.email;
+							document.getElementById('country').value=data.helperMember.country;
+							document.getElementById('mobile').value=data.helperMember.mobile;
+							document.getElementById('createtime').value=data.helperMember.createtime;
+							//心得分享用
+							document.getElementById('usernameAddForm').value=data.helpercv.username;
+							document.getElementById('memberIdAddForm').value=data.helpercv.helpermemberid;
+							document.getElementById('accountAddForm').value=data.helpercv.account;
+						}
+
 						function  update(){
 							var obj=new Object();
 							obj.helpermemberid=$("#helpermemberid").val();
@@ -302,6 +304,15 @@
 								contentType:"application/json",
 								data:JSON.stringify(obj),
 								success:function (data){alert(data)},
+								error:function (error){console.log(error)}
+							})
+						}
+						function logout(){
+							$.ajax({
+								url:'/clearSession',
+								type:'get',
+								contentType:'text',
+								success:function (data){window.location.replace('/homePage.html')},
 								error:function (error){console.log(error)}
 							})
 						}
@@ -588,7 +599,7 @@
 			<script src="assets1/js/util.js"></script>
 			<script src="assets1/js/main.js"></script>
 			<script src="assets/js/addHelperShare.js"></script>
-
+			<script src="assets/js/helpercv.js"></script>
 
 
 

@@ -6,9 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,8 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.adminMemberDao;
 import com.example.demo.model.adminMember;
-import com.example.demo.model.storeworkList;
 import com.example.demo.service.adminMemberService;
+
+
 
 
 
@@ -36,11 +41,11 @@ public class adminMemberController {
 	}
 
 	
-	//登入
-	/*@GetMapping("/adminlogin")
-	public ModelAndView loginQuery(HttpSession session,@RequestParam(value="account") String account,@RequestParam(value="password") String password) {
-		return service.getByAccountAndPassword(session, account, password);
-	}*/
+	@GetMapping("/getAllAdmin")
+	public List<adminMember> getHelperMembers() {
+        return dao.findAll();
+    }
+
 	@GetMapping("/adminlogin")
 	public String loginQuery(HttpServletRequest request,@RequestParam(value="account") String account,@RequestParam(value="password") String password) {
 		HttpSession session = request.getSession();
@@ -53,11 +58,16 @@ public class adminMemberController {
 		session.setAttribute("adminMember", member);
 		return service.UpdateAdminData(member);
 	}
-	
-	@GetMapping("/getAdmin")
-	public List<adminMember> getAdmin() {
-		return service.getAllAdminMember();
-	}
-
+	//刪除adminMember
+	@DeleteMapping("/deleteAdmin/{id}")
+	 public String deleteHelperShare(@PathVariable int id) {
+		dao.deleteById(id);
+    	return "刪除成功";
+    }
+	//進入adminAccount.html時取得adminSession
+	@GetMapping("/getAdminSession")
+    public ResponseEntity<Object> getAdminSession(HttpSession session) {
+        return ResponseEntity.status(HttpStatus.OK).body(session.getAttribute("adminMember"));
+    }
 	
 }

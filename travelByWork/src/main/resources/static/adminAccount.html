@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <title>會員後台管理</title>
     <meta charset="utf-8" />
@@ -29,7 +29,7 @@
             </ul>
         </nav>
         <!-- Main -->
-        <div id="main" th:object="${session.adminMember}">
+        <div id="main" >
             <!-- 內容 -->
             <article id="addAdmin" class="post featured">
                 <header>
@@ -44,31 +44,31 @@
                                 <form method="post" action="" id="login">
                                     <div class="row.aln-center">
                                         <div class="col-6 col-12-xsmall">
-                                            <input th:value=*{adminmemberid} type="text" name="adminmemberid" id="adminmemberid" value=""
+                                            <input  type="text" name="adminmemberid" id="adminmemberid" value=""
                                                 placeholder="員工編號" required readonly /> <br>
                                         </div>
                                         <div class="col-6 col-12-xsmall">
-                                            <input th:value=*{username} type="text" name="username" id="username" value=""
+                                            <input  type="text" name="username" id="username" value=""
                                                 placeholder="員工暱稱" required readonly /> <br>
                                         </div>
                                         <div class="col-6 col-12-xsmall">
-                                            <input th:value=*{name} type="text" name="name" id="name" value=""
+                                            <input  type="text" name="name" id="name" value=""
                                                 placeholder="真實姓名" required readonly /> <br>
                                         </div>
                                         <div class="col-12 col-12-xsmall">
-                                            <input th:value=*{account} type="text" name="account" id="account" value=""
+                                            <input  type="text" name="account" id="account" value=""
                                                 placeholder="登入帳號" required readonly /> <br>
                                         </div>
 										<div class="col-12 col-12-xsmall">
-                                            <input th:value=*{password} type="text" name="password" id="password" value=""
+                                            <input type="text" name="password" id="password" value=""
                                                 placeholder="登入密碼（可修改）" required readonly /> <br>
                                         </div>
                                         <div class="col-12 col-12-xsmall">
-                                            <input th:value=*{mobile} type="text" name="mobile" id="mobile" value=""
+                                            <input  type="text" name="mobile" id="mobile" value=""
                                                 placeholder="手機號碼" required readonly /> <br>
                                         </div>
                                         <div class="col-12 col-12-xsmall">
-                                            <input th:value=*{createtime} type="text" name="createtime" id="createtime" value=""
+                                            <input  type="text" name="createtime" id="createtime" value=""
                                                 placeholder="創建日期" readonly required /><br>
                                         </div>
                                     </div>
@@ -137,6 +137,6 @@
     <script src="assets3/js/main.js"></script>
     <script src="assets3/js/updateTime.js"></script>
     <script src="assets3/js/adminUpdate.js"></script>
-
+	<script src="assets/js/adminGetSession.js"></script>
 </body>
 </html>

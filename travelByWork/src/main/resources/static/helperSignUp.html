@@ -143,6 +143,7 @@
 												obj.mobile=$("#mobile").val();
 												obj.country=$("#country").val();
 												obj.createtime=$("#createtime").val();
+												obj.role='ROLE_USER';
 												$.ajax({
 													url:"/createsession",
 													type:"post",
@@ -154,7 +155,6 @@
 														console.log(error)
 													}
 												})
-												
 											}
 											function checkValue(data){
 												$("#failuser").html("");

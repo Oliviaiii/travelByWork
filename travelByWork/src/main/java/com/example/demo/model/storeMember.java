@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="storemember")
-public class storeMember {
+public class StoreMember {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,9 +29,9 @@ public class storeMember {
 	private String role;
 	
 
-	public storeMember() {}
+	public StoreMember() {}
 
-	public storeMember(Integer storememberid, String storeName, String ownerName, String account, String password, String email, String mobile, String phone, String address, String createTime, String role) {
+	public StoreMember(Integer storememberid, String storeName, String ownerName, String account, String password, String email, String mobile, String phone, String address, String createTime, String role) {
 		this.storememberid = storememberid;
 		this.storeName = storeName;
 		this.ownerName = ownerName;

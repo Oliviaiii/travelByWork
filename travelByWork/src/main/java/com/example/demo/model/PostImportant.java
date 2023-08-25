@@ -12,7 +12,7 @@ public class PostImportant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer postimportantid;
-
+    private String postwhat;
     private String words;
     private String username;
     private String postdate;
@@ -21,16 +21,24 @@ public class PostImportant {
     public PostImportant() {
         super();
     }
+    public PostImportant(Integer postimportantid, String postwhat, String words, String username, String postdate,
+			Integer adminmemberid) {
+		super();
+		this.postimportantid = postimportantid;
+		this.postwhat = postwhat;
+		this.words = words;
+		this.username = username;
+		this.postdate = postdate;
+		this.adminmemberid = adminmemberid;
+	}
 
-    public PostImportant(String words, String username, String postdate, Integer adminmemberid) {
-        super();
-        this.words = words;
-        this.username = username;
-        this.postdate = postdate;
-        this.adminmemberid = adminmemberid;
-    }
-
-    public Integer getPostimportantid() {
+	public String getPostwhat() {
+		return postwhat;
+	}
+	public void setPostwhat(String postwhat) {
+		this.postwhat = postwhat;
+	}
+	public Integer getPostimportantid() {
         return postimportantid;
     }
 
@@ -70,3 +78,4 @@ public class PostImportant {
         this.adminmemberid = adminmemberid;
     }
 }
+

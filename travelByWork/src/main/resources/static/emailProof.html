@@ -80,9 +80,7 @@
 
                 
                 <script>
-
-
-                    $(document).ready(() => {
+$(document).ready(() => {
                         setTimeout(() => {
                             getSession();
                         }, 1000);
@@ -106,7 +104,6 @@
                             error:function (error){console.log(error)}
                         })
                     }
-
                     function confirm(evt){
                         evt.preventDefault();
                         var obj=$('#passcode').val();
@@ -120,28 +117,25 @@
                             error:function (error){console.log(error)}
                         })
                     }
-
                     function checkData(data){
                         var code=data.toString();
                         if(code=='true'){
-                            window.location.replace('homePage.html')
+                            window.location.replace('emailSuccess.html')
                         }else{
-                            $('#false').html("<h2 style='color: red'>驗證碼錯誤,請檢查過後並重新輸入</h2>");
+                            $('#false').html("<h4 style='color: red'>驗證碼錯誤,請檢查過後並重新輸入</h4>");
                         }
                     }
-
                     function getSession() {
                         $.ajax({
                             url: '/getCreateSession',
                             type: 'get',
-                            datatype: 'json',
+                            contentType: 'text',
                             success:setSession,
                             error: function (error) {
                                 console.log(error)
                             }
                         })
                     }
-
                     function setSession(data){
                         document.getElementById("email").value=data.email;
                     }

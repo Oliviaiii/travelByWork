@@ -27,28 +27,30 @@ $(document).ready(function() {
 
             // 添加刪除處理 還沒做
             $(".delete-btn").click(function() {
-                const jobId = $(this).data("id");
-                // 調用刪除函數，調用 jobId（我先隨變取名字）等信息 
-                deleteJob(jobId);
+                const jobId = $(this).data("id"); 
+                deleteHelperMemebr(jobId);
             });
         },
        
     });
 });
 
-// 删除按鈕 還沒做
-function deleteJob(jobId) {
-    // 使用AJAX發送刪除請求
-    $.ajax({
-        url: "/deleteJob", // 替换成請求URL
-        type: "DELETE",
-        data: { jobId: jobId }, // 根据需要傳參數
-        success: function(response) {
-            // 在成功后執行的操作，例如重新加載數據
-            // 調用之前的獲取數據邏輯，重新弄表格
-        },
-        error: function(error) {
-            // 發生錯誤的diolid
-        }
-    });
+function deleteHelperMemebr(jobId){
+
+	$.ajax({
+		url: "deleteHelperMemebr/"+jobId,
+	    method: 'delete',
+	    dataType: 'text',
+	    success: result,
+	    error: function(error) { console.error('Error:', error);}
+	});
 }
+
+function result(data){
+    if(data === "刪除成功"){
+        window.location.href = "/helperFix.html";
+    } else {
+        alert(data);
+    }
+}
+

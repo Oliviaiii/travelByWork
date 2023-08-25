@@ -35,3 +35,4 @@ public class PostImportantService {
         postImportantDao.deleteById(id);
     }
 }
+

@@ -2,10 +2,12 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.helpercvDao;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
-import com.example.demo.model.storeMember;
+import com.example.demo.model.StoreMember;
+import com.example.demo.model.helpercv;
 import com.example.demo.service.HelperMemberService;
 import com.example.demo.service.storeMemberService;
 
@@ -23,7 +25,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -37,17 +41,25 @@ public class HelperMemberController {
     private HelperMemberRepository repository;
     @Autowired
     private storeMemberService service;
+    @Autowired
+	private helpercvDao helpercvdao;
     
     @PostMapping("/gethelpermember")
     public void getHelperMember(@RequestBody AccountConfig accountConfig) {
 
     }
+    
+    @GetMapping("/clearSession")
+    public void clearSession(){
+
+    }
+    
     @PostMapping("/createsession")
     public ResponseEntity<String> createsession(@RequestBody HelperMember helperMember,HttpSession session) {
         HelperMember h1=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
         HelperMember h2=helperMemberService.getHelperMemberByUsername(helperMember.getUsername());
         HelperMember h3=helperMemberService.getHelperMemberByEmail(helperMember.getEmail());
-        storeMember s1=service.findStoreMemberByAccount(helperMember.getAccount());
+        StoreMember s1=service.findStoreMemberByAccount(helperMember.getAccount());
         if(h1!=null) {
             return  ResponseEntity.status(HttpStatus.OK).body("account");
         }
@@ -91,13 +103,24 @@ public class HelperMemberController {
     public ResponseEntity<Object> getSession(HttpSession session) {
         String securityContext = SecurityContextHolder.getContext().getAuthentication().getName();
         HelperMember helperMember=helperMemberService.getHelperMemberByAccount(securityContext);
-        return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+        helpercv helpercv=helpercvdao.findByAccount(securityContext);
+        Map<String, Object> userMap = new HashMap<>();
+        userMap.put("helpercv", helpercv);
+        userMap.put("helperMember", helperMember);
+        return ResponseEntity.status(HttpStatus.OK).body(userMap);
     }
 
     @GetMapping("/getCreateSession")
     public ResponseEntity<Object> getCreateSession(HttpSession session) {
         Object helperMember=session.getAttribute("sign");
-        return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+        Object storeMember=session.getAttribute("storesign");
+        if(helperMember!=null) {
+            return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+        } else if (storeMember!=null) {
+            return ResponseEntity.status(HttpStatus.OK).body(storeMember);
+        }else{
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(false);
+        }
     }
     
     //oli
@@ -110,19 +133,31 @@ public class HelperMemberController {
     	HelperMember member=repository.findByAccount(helperMember.getAccount());
     	if(member==null) {
     		helperMemberService.createHelperMember(helperMember);
-    		session.setAttribute("user",repository.findByAccount(helperMember.getAccount()));
+    		HelperMember newMember=repository.findByAccount(helperMember.getAccount());
+    		Map<String, Object> userMap = new HashMap<>();
+            userMap.put("helperMember", newMember);
+    		session.setAttribute("user",userMap);
             session.setMaxInactiveInterval(60);
         	return "成功";
     	}else {
-    		session.setAttribute("user",member);
+    		helpercv helpercv=helpercvdao.findByAccount(helperMember.getAccount());
+            Map<String, Object> userMap = new HashMap<>();
+            userMap.put("helpercv", helpercv);
+            userMap.put("helperMember", member);
+    		session.setAttribute("user",userMap);
             session.setMaxInactiveInterval(60);
     		return "成功";
     	}
     }
     @GetMapping("/getGoogleSession")
     public ResponseEntity<Object> getGoogleSession(HttpSession session) {
-        HelperMember helperMember=(HelperMember) session.getAttribute("user");
-        return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+        return ResponseEntity.status(HttpStatus.OK).body(session.getAttribute("user"));
     }
 
+    //刪除helperMember
+    @DeleteMapping("/deleteHelperMemebr/{id}")
+    public String deleteHelperMemebr(@PathVariable int id) {
+    	repository.deleteById(id);
+    	return "刪除成功";
+    }
 }

@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.dao.adminMemberDao;
 import com.example.demo.model.adminMember;
-import com.example.demo.model.storeworkList;
 
 @Service
 public class adminMemberService {
@@ -66,11 +63,7 @@ public class adminMemberService {
 			dao.save(member);
 			return "密碼修改成功";
 	}
-	
-	//findall
-	public List<adminMember> getAllAdminMember() {
-		return dao.findAll();
-	}
+
 	
 }
 

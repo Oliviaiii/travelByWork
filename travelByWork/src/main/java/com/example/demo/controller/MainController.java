@@ -124,5 +124,9 @@ public class MainController {
     	ModelAndView model=new ModelAndView("adminAccount2.html");
     	return model;
     }
-
+    
+    @RequestMapping("whatFix")
+    public void whatFix(HttpServletResponse response) throws IOException {
+        response.sendRedirect("whatFix.html");
+    }
 }

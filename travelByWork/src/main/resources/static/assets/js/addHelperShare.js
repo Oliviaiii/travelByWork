@@ -4,8 +4,8 @@ function addHelperShare(event){
 	event.preventDefault();
     const helpershare = {};
 	//helpershare.helpershareid = $("#helpershareid").val();
-	helpershare.helpmemberid = $("#helpmemberid").val();
-    helpershare.account = $("#accout").val();
+	helpershare.helpmemberid = $("#helpermemberid").val();
+    helpershare.account = $("#account").val();
     helpershare.username = $("#username").val();
     helpershare.startdate = $("#startdate").val();
     helpershare.enddate = $("#enddate").val();

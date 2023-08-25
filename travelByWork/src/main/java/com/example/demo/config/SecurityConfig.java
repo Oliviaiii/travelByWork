@@ -35,7 +35,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                 		.anyRequest().permitAll())
                 .formLogin()
-                .loginPage("/gethelpermember");
+                .loginPage("/gethelpermember")
+                .usernameParameter("account")
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutUrl("/clearSession")
+                .logoutSuccessUrl("/homePage.html")
+                .permitAll();
 
         return http.build();
 
