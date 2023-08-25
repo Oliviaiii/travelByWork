@@ -34,8 +34,9 @@ public class storeworkListController {
         return slservice.getAllStoreworkList();
     }
 
-    @PostMapping(value = "/createStoreWork")
+    @PostMapping(value = "/createJob")
     public String addsl(@RequestBody storeworkList sl) {
+    	System.out.println(sl.toString());
         return slservice.addsl(sl);
     }
     
@@ -47,6 +48,10 @@ public class storeworkListController {
     @GetMapping("/getFavoriteJob/{storeworklistid}")
     public storeworkList getFavoriteJob(@PathVariable int storeworklistid) {
     	return workListDao.findById(storeworklistid).get();
+    }
+    @GetMapping("/getByStoreMemebrId/{storememberid}")
+    public List<storeworkList> getByStoreMemebrId(@PathVariable int storememberid){
+    	return workListDao.findByStorememberid(storememberid);
     }
 }
 

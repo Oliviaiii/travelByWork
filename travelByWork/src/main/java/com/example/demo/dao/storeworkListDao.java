@@ -9,6 +9,7 @@ import com.example.demo.model.storeworkList;
 
 @Repository //oli
 public interface storeworkListDao extends JpaRepository<storeworkList, Integer> {
-    // 可以根據需要添加自定義的查詢方法
+    // 用storememberid找資料
+	public List<storeworkList> findByStorememberid(int storememberid);
 	
 }

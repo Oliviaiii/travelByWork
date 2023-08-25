@@ -1,5 +1,4 @@
-function storework(event){
-    
+function storework(event){  
     event.preventDefault();
     const storeworklist = {};
 	storeworklist.storememberid = $("#memberIdWorkList").val();
@@ -10,7 +9,6 @@ function storework(event){
     storeworklist.phone = $("#phoneWorkList").val();
     storeworklist.address = $("#addressWorkList").val();
     storeworklist.location = $("#location").val();
-    //storeworklist.workupdatetime = $("#workupdatetime").val();
     storeworklist.workage = $("#workage").val();
     storeworklist.worksexual = $("#worksexual").val();
     storeworklist.howtoapply = $("#howtoapply").val();
@@ -27,10 +25,10 @@ function storework(event){
     storeworklist.money = $("#money").val();
     storeworklist.workbonus = $("#workbonus").val();
     $.ajax({
-        url: "createStoreWork",
+        url: "createJob",
         type: "post",
         dataType: "text",
-        contentType: "Application/json",
+        contentType: "application/json",
         data: JSON.stringify(storeworklist),
         success: result,
         error: function(myerror) {
@@ -38,7 +36,6 @@ function storework(event){
         }
     });
 }
-
 function result(data){
     if(data === "新增成功"){
         window.location.href = "/postJob";
@@ -46,7 +43,6 @@ function result(data){
         alert(data);
     }
 }
-
 $("#storeworkListForm").submit(storework);
 
 
@@ -299,5 +295,167 @@ $(document).ready(function() {
         $("#callDialog, #timeDialog, #needDialog, #workDetailDialog, #bonusDialog").css("display", "block");
     });
 });
+
+
+//myJobTableBody
+$(document).ready(getStoreid);
+function getStoreid() {
+    $.ajax({
+        url: '/getStore',
+        type: 'get',
+        datatype: 'json',
+        success: function(data) {
+            getMyJob(data);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+function populateRowWithData(item) {
+    const jobid = item.storeworklistid;
+    console.log(jobid);
+    const row = "<tr>" +
+        "<td>" + jobid + "</td>" +
+        "<td>" + item.changedatebegin + "~" + item.changedateeend + "</td>" +
+        "<td>" + item.location + "</td>";
+
+    $.ajax({
+        url: '/getJobByWorkListIdSize/' + jobid,
+        type: 'get',
+        datatype: 'json',
+        success: function(data) {
+            console.log(data);
+            const size = data;
+            const finalRow = row + "<td>" + size + "</td></tr>";
+            $("#myjobtable").append(finalRow);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+async function getMyJob(data) {
+    const storeid = data.storememberid;
+    try {
+        const response = await $.ajax({
+            url: '/getByStoreMemebrId/' + storeid,
+            type: 'get',
+            datatype: 'json'
+        });
+        response.forEach(populateRowWithData);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+
+$("#logout").click(logout)
+$(document).ready(getStore)
+	
+	function getStore() {
+		$.ajax({
+			url: '/getStore',
+			type: 'get',
+			datatype: 'json',
+			success:setSession,
+			error: function (error) {
+				console.log(error)
+			}
+		})
+	}
+	function setSession(data){
+		document.getElementById('storememberid').value=data.storememberid;
+		document.getElementById('account').value=data.account;
+		document.getElementById('password').value=data.password;
+		document.getElementById('storename').value=data.storeName;
+		document.getElementById('ownername').value=data.ownerName;
+		document.getElementById('address').value=data.address;
+		document.getElementById('phone').value=data.phone;
+		document.getElementById('mobile').value=data.mobile;
+		document.getElementById('email').value=data.email;
+		document.getElementById('createtime').value=data.createTime;
+		//店家發布工作欄位
+		document.getElementById('memberIdWorkList').value=data.storememberid;		
+		document.getElementById('storenameWorkList').value=data.storeName;
+		document.getElementById('ownernameWorkList').value=data.ownerName;
+		document.getElementById('addressWorkList').value=data.address;
+		document.getElementById('phoneWorkList').value=data.phone;
+		document.getElementById('mobileWorkList').value=data.mobile;
+		document.getElementById('emailWorkList').value=data.email;						
+	}
+
+	function  update(){
+		var obj=new Object();
+		obj.storememberid=$("#storememberid").val()
+		obj.ownername=$("#ownername").val();
+		obj.address=$("#address").val();
+		obj.phone=$("#phone").val();
+		obj.mobile=$("#mobile").val();
+		$.ajax({
+			url:"/updatestoremember",
+			type:"put",
+			datetype:"text",
+			contentType:"application/json",
+			data:JSON.stringify(obj),
+			success:function (data){alert(data)},
+			error:function (error){console.log(error)}
+		})
+	}
+	function logout(){
+	$.ajax({
+		url:'/clearSession',
+		type:'get',
+		contentType:'text',
+		success:function (data){window.location.replace('/homePage.html')},
+		error:function (error){console.log(error)}
+	})
+}
+
+///
+$("#saveButton").click(update)
+							
+							// 獲取編輯按鈕和保存按鈕
+							const editButton = document.getElementById('editButton');
+							const saveButton = document.getElementById('saveButton');
+
+							 // 獲取表單元素 輸入欄位
+							const form = document.getElementById('userForm');
+							const inputs = form.querySelectorAll('input');
+							
+							// 編輯輸入欄位 切換按鈕
+							function enableInputs() {
+								for (const input of inputs) {
+									const inputName = input.getAttribute('name');
+									// 排除特定的輸入欄位
+									if (inputName !== 'storememberid' && inputName !== 'storename' 
+									&& inputName !== 'account' && inputName !== 'email' 
+									&& inputName !== 'createtime') {
+										input.removeAttribute('disabled');
+									}
+								}
+								editButton.style.display = 'none';
+								saveButton.style.display = 'inline-block';
+							}
+
+							
+							// 鎖定輸入欄位 切換按鈕
+							function disableInputs() {
+								for (const input of inputs) {
+									input.setAttribute('disabled', 'true');
+								}
+								editButton.style.display = 'inline-block';
+								saveButton.style.display = 'none';
+							}
+							
+							// 監聽事件
+							editButton.addEventListener('click', enableInputs);
+							saveButton.addEventListener('click', disableInputs);
+							
+							// 初始
+							disableInputs();
 
 

@@ -72,22 +72,12 @@ public class MainController {
     public void emailProof(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailProof.html");
     }
-    @RequestMapping(value = "emailProof2")
-    public ModelAndView emailProof2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailProof2.html");
-    	return model;
-    }
     
     @RequestMapping("emailSuccess")
     public void emailSuccess(HttpServletResponse response) throws IOException {
         response.sendRedirect("emailSuccess.html");
     }
-    @RequestMapping(value = "emailSuccess2")
-    public ModelAndView emailSuccess2() throws IOException {
-    	ModelAndView model=new ModelAndView("emailSuccess2.html");
-    	return model;
-    }
-    
+
     @RequestMapping("forgetPassword")
     public void forgetPassword(HttpServletResponse response) throws IOException {
         response.sendRedirect("forgetPassword.html");
@@ -113,11 +103,6 @@ public class MainController {
         response.sendRedirect("adminAccount.html"); 
     }
     
-    @RequestMapping(value = "storeAccount2")
-    public ModelAndView storeAccount2(HttpServletResponse response) throws IOException {
-    	ModelAndView model=new ModelAndView("storeAccount2.html");
-    	return model;
-    }
     
     @RequestMapping(value = "adminAccount2")
     public ModelAndView adminAccount2(HttpServletResponse response) throws IOException {

@@ -44,45 +44,72 @@
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h2><a href="#">And this is a<br />
-									massive headline</a></h2>
-									<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
-									amet nullam sed etiam veroeros.</p>
-								</header>
-								<a href="#" class="image main"><img src="images3/pic01.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="#" class="button large">Full Story</a></li>
-								</ul>
-							</article>
-
-						<!-- Posts -->
+						<!-- 內容 -->
+						<article id="" class="post featured">
+							<header>
+								<h2>查看所有來信資訊</h2>
+								<!-- 顯示當日日期 -->
+								<span class="date" id="currentDateTime">April 25, 2017</span>
+							</header>
 							
+							<div>
+								<!-- Table -->
+								<input type="text" id="searchInput" placeholder="輸入關鍵字查詢" /><br>
+								<button id="searchButton">搜尋</button><br>
 
-						<!-- Footer頁碼設計 -->
-							<footer>
-								<div class="pagination">
-									<!--<a href="#" class="previous">Prev</a>-->
-									<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												
+												<tr>
+													<th>來信編號</th>
+													<th>聯絡方式</th>
+													<th>詳細內容</th>
+													<!-- 用按鈕打開diolog呈現 
+														格式
+														來信者暱稱：name
+														來信類型：contacttype
+														來信日期：contactdate
+														詳細內容：message
+														寫在ｊｓ -->
+													<th>回信</th>
+													<!-- 做一個按鈕打開diolog呈現寫信畫面，回信給來信者 寫在ｊｓ
+														標題：打工換宿網-contacttype之事宜
+													信件格式：
+													親愛的name你好，我們是打工換宿網，於contactdate收到您有關於contacttype的來信！
+													您所傳送的內容如下：message
+													（以下就是我們回信的內容）
+													打工換宿網誠摯感謝您，祝順心！
+													-->
+
+
+												</tr>
+											</thead>
+
+											<tbody id="messageData">
+
+											</tbody>
+
+											
+										</table>
+									</div>
+
+									<hr/>
+
+								
+
+
+
+							</section>
 
 					</div>
+							<div id="contextDialog" title="詳細內容">
+								<p>聯絡方式如下</p>
+							</div>
 
-				
-					
-							
+							<div id="replyDialog" title="回信">
+								<p>以下為工作需求時間</p>
+							</div>
 				<!-- Copyright -->
 					<div id="copyright">
 						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
@@ -99,7 +126,8 @@
 			<script src="assets3/js/util.js"></script>
 			<script src="assets3/js/main.js"></script>
 			<script src="assets3/js/updateTime.js"></script>
-
-
+			<script src="assets3/js/MessageHelp.js"></script>
+       		<script src="assets3/js/search.js"></script>
+       		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	</body>
 </html>

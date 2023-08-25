@@ -86,6 +86,8 @@
 
                                     <div class="col-7 col-12-medium">
                                         <input  type="text" id="password" name="password" value="" placeholder="密碼" disabled/>
+										<a href="forgetPassword" >前往修改密碼</a>
+
                                     </div>
 
                                     <div class="col-3 col-12-medium">
@@ -156,70 +158,11 @@
                         </form>
                         <button id="logout" type="button">登出</button>
                     </article>
-
+	
+						<!--  
 						<script>
-							$("#logout").click(logout)
-							$(document).ready(getStore)
-							$("#saveButton").click(update)
-							function getStore() {
-								$.ajax({
-									url: '/getStore',
-									type: 'get',
-									datatype: 'json',
-									success:setSession,
-									error: function (error) {
-										console.log(error)
-									}
-								})
-							}
-							function setSession(data){
-								document.getElementById('storememberid').value=data.storememberid;
-								document.getElementById('account').value=data.account;
-								document.getElementById('password').value=data.password;
-								document.getElementById('storename').value=data.storeName;
-								document.getElementById('ownername').value=data.ownerName;
-								document.getElementById('address').value=data.address;
-								document.getElementById('phone').value=data.phone;
-								document.getElementById('mobile').value=data.mobile;
-								document.getElementById('email').value=data.email;
-								document.getElementById('createtime').value=data.createTime;
-								//店家發布工作欄位
-								document.getElementById('memberIdWorkList').value=data.storememberid;		
-								document.getElementById('storenameWorkList').value=data.storeName;
-								document.getElementById('ownernameWorkList').value=data.ownerName;
-								document.getElementById('addressWorkList').value=data.address;
-								document.getElementById('phoneWorkList').value=data.phone;
-								document.getElementById('mobileWorkList').value=data.mobile;
-								document.getElementById('emailWorkList').value=data.email;						
-							}
-
-							function  update(){
-								var obj=new Object();
-								obj.storememberid=$("#storememberid").val()
-								obj.ownername=$("#ownername").val();
-								obj.address=$("#address").val();
-								obj.phone=$("#phone").val();
-								obj.mobile=$("#mobile").val();
-								$.ajax({
-									url:"/updatestoremember",
-									type:"put",
-									datetype:"text",
-									contentType:"application/json",
-									data:JSON.stringify(obj),
-									success:function (data){alert(data)},
-									error:function (error){console.log(error)}
-								})
-							}
-							function logout(){
-							$.ajax({
-								url:'/clearSession',
-								type:'get',
-								contentType:'text',
-								success:function (data){window.location.replace('/homePage.html')},
-								error:function (error){console.log(error)}
-							})
-						}
-
+						$("#saveButton").click(update)
+							
 							// 獲取編輯按鈕和保存按鈕
 							const editButton = document.getElementById('editButton');
 							const saveButton = document.getElementById('saveButton');
@@ -260,7 +203,7 @@
 							// 初始
 							disableInputs();
 							</script>
-							
+							-->
 						
 
 					<!-- Work -->
@@ -609,7 +552,7 @@
 					<br>
 					
 					<ul class="actions">
-					<li><a href="homePageAfterSE" class="button active">返回首頁</a></li>
+					<li><a href="homePageAfterSE.html" class="button active">返回首頁</a></li>
 					</ul>
 					
 					
@@ -630,7 +573,7 @@
 			<script src="assets1/js/util.js"></script>
 			<script src="assets1/js/main.js"></script>
             <script src="assets/js/jquery.scrollex.min.js"></script>
-
+			 <script src="assets/js/storeAccount.js"></script>
 
 	</body>
 </html>

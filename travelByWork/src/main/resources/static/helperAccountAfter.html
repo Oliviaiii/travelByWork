@@ -10,20 +10,13 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
-
-
-		<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 		<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	
-
-
-
 		<noscript><link rel="stylesheet" href="assets1/css/noscript.css" /></noscript>
 
 		<!-- logo -->
@@ -87,9 +80,9 @@
 										</div>
 										<div class="col-7 col-12-medium">
 											<input type="text" name="password" id="password" value="" placeholder="密碼(可修改)" disabled/>
-											<a href="forgetPassword" >前往修改密碼</a>
-										</div>
+										<!-- <a href="forgetPassword" >前往修改密碼</a> -->
 
+										</div>
 
 										<div class="col-3 col-12-medium">
 											<label for="username">你的暱稱：</label>
@@ -180,7 +173,8 @@
 									// 排除特定的輸入欄位
 									if (inputName !== 'helpermemberid' && inputName !== 'email' 
 									&& inputName !== 'account' && inputName !== 'name' 
-									&& inputName !== 'birth'  && inputName !== 'createtime') {
+									&& inputName !== 'birth' && inputName !== 'sexual' 
+									&& inputName !== 'country' && inputName !== 'createtime') {
 										input.removeAttribute('disabled');
 									}
 								}
@@ -506,7 +500,10 @@
 										</div>
 									</div>
 								</form>
+							</article>
 
+										
+										
 										<script>
    										// 顯示日期選擇
      										  document.getElementById('startdate').addEventListener('click', function() {
@@ -556,14 +553,14 @@
 										</script>
 
 
-							</article>
+							
 
 					</div>
 					
 					<br>
 					
 					<ul class="actions">
-					<li><a href="homePageAfterHP" class="button active">返回首頁</a></li>
+					<li><a href="homePageAfterHP.html" class="button active">返回首頁</a></li>
 					</ul>
 					
 					

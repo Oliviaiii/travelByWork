@@ -51,10 +51,11 @@ $(document).ready(function() {
 					            row += "<td> <button class='delete-btn' data-id='" + item.helperjobid + "'>删除</button> </td>" +
 					                "</tr>";
 			            		tableBody.append(row);
+						},
+						error: function (error) { console.log(error); }
+						});
 					},
 					error: function (error) { console.log(error); }
-				});
-					}
 				});
 
             });
