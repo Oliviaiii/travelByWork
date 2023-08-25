@@ -50,7 +50,6 @@
 						<a href="#work" class="icon solid fa-folder"><span>履歷</span></a>
 						<a href="#contact" class="icon solid fa-envelope"><span>已投遞店家</span></a>
 						<a href="#shareMe" class="icon fa-solid fa-heart"><span>分享心得</span></a>
-						<a href="#" class="icon solid fa-home"><span>通知</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -88,7 +87,9 @@
 										</div>
 										<div class="col-7 col-12-medium">
 											<input type="text" name="password" id="password" value="" placeholder="密碼(可修改)" disabled/>
+											<a href="forgetPassword" >前往修改密碼</a>
 										</div>
+
 
 										<div class="col-3 col-12-medium">
 											<label for="username">你的暱稱：</label>
@@ -179,8 +180,7 @@
 									// 排除特定的輸入欄位
 									if (inputName !== 'helpermemberid' && inputName !== 'email' 
 									&& inputName !== 'account' && inputName !== 'name' 
-									&& inputName !== 'birth' && inputName !== 'sexual' 
-									&& inputName !== 'country' && inputName !== 'createtime') {
+									&& inputName !== 'birth'  && inputName !== 'createtime') {
 										input.removeAttribute('disabled');
 									}
 								}
@@ -352,38 +352,23 @@
 					<!-- Contact -->
 						<article id="contact" class="panel">
 							<header>
-								<h2>系統通知</h2>
+								<h2>收藏工作</h2>
 							</header>
 							
 							<table>
 								<thead>
 									<tr>
-										<th>已投履歷店家</th>
-										<th>投遞時間</th>
-										<th>店家是否查閱</th>
-										<th>取消</th>
+										<th>已收藏店家</th>
+										<th>開始日期</th>
+										<th>結束日期</th>
+										<th>收藏人數</th>
+										<th>取消收藏</th>
+										
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>ABC Store</td>
-										<td>2023-08-15 10:30 AM</td>
-										<td>是</td>
-										<td><button>取消</button></td>
-									</tr>
-									<tr>
-										<td>XYZ Company</td>
-										<td>2023-08-14 03:45 PM</td>
-										<td>否</td>
-										<td><button>取消</button></td>
-									</tr>
-									<tr>
-										<td>123 Shop</td>
-										<td>2023-08-13 09:15 AM</td>
-										<td>是</td>
-										<td><button>取消</button></td>
-									</tr>
-									<!-- 可以繼續添加更多行 -->
+									<tbody id="helperjob"></tbody>
+									
 								</tbody>
 							</table>
 
@@ -578,7 +563,7 @@
 					<br>
 					
 					<ul class="actions">
-					<li><a href="homePage" class="button active">返回首頁</a></li>
+					<li><a href="homePageAfterHP" class="button active">返回首頁</a></li>
 					</ul>
 					
 					
@@ -600,7 +585,7 @@
 			<script src="assets1/js/main.js"></script>
 			<script src="assets/js/addHelperShare.js"></script>
 			<script src="assets/js/helpercv.js"></script>
-
+			<script src="assets/js/getHelperJob.js"></script>
 
 
 

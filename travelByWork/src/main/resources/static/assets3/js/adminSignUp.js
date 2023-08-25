@@ -26,7 +26,7 @@ function adiminSignUp(event){
 
 function result(data){
     if (data === "資料新增成功") {
-        window.location.href = "/homePage";
+        window.location.href = "/addAdmin";
     } else {
         alert(data); 
     }

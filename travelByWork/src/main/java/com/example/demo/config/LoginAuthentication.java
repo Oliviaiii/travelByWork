@@ -1,6 +1,6 @@
 package com.example.demo.config;
 
-import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.model.HelperMember;
@@ -26,7 +26,7 @@ import java.util.Set;
 @Component
 public class LoginAuthentication implements AuthenticationProvider {
     @Autowired
-    private HelperMemberRepository helperMemberRepository;
+    private HelperMemberDao helperMemberDao;
     
     @Autowired
     private storeMemberDao dao;
@@ -42,7 +42,7 @@ public class LoginAuthentication implements AuthenticationProvider {
 
     	String account = authentication.getName();
         String pwd = authentication.getCredentials().toString();
-        HelperMember helperMember = helperMemberRepository.findHelperMemberByAccount(account);
+        HelperMember helperMember = helperMemberDao.findHelperMemberByAccount(account);
         StoreMember storeMember = dao.findStoreMemberByAccount(account);
         if (helperMember != null) {
             if (encoder.matches(pwd, helperMember.getPassword())) {

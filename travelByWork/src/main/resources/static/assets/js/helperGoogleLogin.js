@@ -27,7 +27,7 @@ function onSignIn(response) {
 	}
 	function result(data){
 		 if (data === "成功") {
-		     window.location.href = "/helperAccount";
+		     window.location.href = "/helperAccountAfter.html";
 		 }else{
 			 alert(data);
 		 }

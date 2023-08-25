@@ -1,21 +1,19 @@
 package com.example.demo.dao;
 
-import com.example.demo.dto.UpdateConfig;
 import com.example.demo.model.HelperMember;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface HelperMemberDao {
+public interface HelperMemberDao extends JpaRepository<HelperMember,Integer> {
+    HelperMember findHelperMemberByAccount(String account);
 
-    Integer createHelperMember(HelperMember helperMember);
+    HelperMember findHelperMemberByUsername(String username);
 
-    Object updateHelperMember(UpdateConfig updateConfig);
+    HelperMember findHelperMemberByEmail(String email);
 
-    HelperMember getHelperMemberByAccount(String account);
-
-    HelperMember getHelperMemberByUsername(String username);
-
-    HelperMember getHelperMemberByEmail(String email);
-    
+    public boolean existsByAccount(String account);
+    public HelperMember findByAccount(String account);
     List<HelperMember> findAll();
 }
+

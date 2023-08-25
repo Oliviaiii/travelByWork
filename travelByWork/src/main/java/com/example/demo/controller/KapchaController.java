@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.dto.VerifyCodeText;
 import com.example.demo.model.HelperMember;
@@ -24,7 +24,7 @@ public class KapchaController {
     @Autowired
     private DefaultKaptcha defaultKaptcha;
     @Autowired
-    private HelperMemberRepository helperMemberRepository;
+    private HelperMemberDao helperMemberRepository;
     @Autowired
     private storeMemberDao dao;
 

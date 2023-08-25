@@ -26,7 +26,7 @@ function redirect(data) {
     } else {
         var result = data.role.toString();
         if (result === "ROLE_USER") {
-            window.location.replace("helperAccount.html")
+            window.location.replace("helperAccountAfter.html")
         } else if (result === "ROLE_ADMIN") {
             window.location.replace("storeAccountAfter.html")
         }

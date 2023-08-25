@@ -44,5 +44,9 @@ public class storeworkListController {
     	workListDao.deleteById(id);
     	return "刪除成功";
     }
+    @GetMapping("/getFavoriteJob/{storeworklistid}")
+    public storeworkList getFavoriteJob(@PathVariable int storeworklistid) {
+    	return workListDao.findById(storeworklistid).get();
+    }
 }
 

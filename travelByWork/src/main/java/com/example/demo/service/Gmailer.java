@@ -53,11 +53,11 @@ public class Gmailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public void sendMail(String toEmail,String subject, String message) throws Exception {
+    public void sendMail(String from,String toEmail,String subject, String message) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
-        email.setFrom(new InternetAddress(TEST_EMAIL));
+        email.setFrom(new InternetAddress(from));
         email.addRecipient(TO, new InternetAddress(toEmail));
         email.setSubject(subject);
         email.setText(message);

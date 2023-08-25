@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.model.helperShare;
 import com.example.demo.model.HelperMember;
 import com.example.demo.model.StoreMember;
-import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.dto.StoreUpdateConfig;
 import com.example.demo.service.storeMemberService;
@@ -39,7 +39,7 @@ public class storeMemberController {
 	@Autowired
     private PasswordEncoder passwordEncoder;
 	@Autowired
-    private HelperMemberRepository helperMemberRepository;
+    private HelperMemberDao helperMemberDao;
 	
 	//註冊資料加入資料庫
 	@PostMapping("/storesignup")			
@@ -83,7 +83,7 @@ public class storeMemberController {
     @PostMapping("/createstoresession")
     public ResponseEntity<String> createsession(@RequestBody StoreMember member, HttpSession session) {
         StoreMember s1 = service.findStoreMemberByAccount(member.getAccount());
-        HelperMember h1 = helperMemberRepository.findHelperMemberByAccount(member.getAccount());
+        HelperMember h1 = helperMemberDao.findHelperMemberByAccount(member.getAccount());
         StoreMember s2 = service.findStoreMemberByEmail(member.getEmail());
         if (s1 != null) {
             return ResponseEntity.status(HttpStatus.OK).body("account");

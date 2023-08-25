@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.HelperMemberDao;
-import com.example.demo.dao.HelperMemberRepository;
 import com.example.demo.dao.helpercvDao;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.dto.UpdateConfig;
@@ -38,7 +37,7 @@ public class HelperMemberController {
     @Autowired
     private HelperMemberService helperMemberService;
     @Autowired
-    private HelperMemberRepository repository;
+    private HelperMemberDao helperMemberDao;
     @Autowired
     private storeMemberService service;
     @Autowired
@@ -130,10 +129,10 @@ public class HelperMemberController {
     }
     @PostMapping("/googleLogin")
     public String googlelogin(@RequestBody HelperMember helperMember,HttpSession session) {
-    	HelperMember member=repository.findByAccount(helperMember.getAccount());
+    	HelperMember member=helperMemberDao.findByAccount(helperMember.getAccount());
     	if(member==null) {
     		helperMemberService.createHelperMember(helperMember);
-    		HelperMember newMember=repository.findByAccount(helperMember.getAccount());
+    		HelperMember newMember=helperMemberDao.findByAccount(helperMember.getAccount());
     		Map<String, Object> userMap = new HashMap<>();
             userMap.put("helperMember", newMember);
     		session.setAttribute("user",userMap);
@@ -157,7 +156,7 @@ public class HelperMemberController {
     //刪除helperMember
     @DeleteMapping("/deleteHelperMemebr/{id}")
     public String deleteHelperMemebr(@PathVariable int id) {
-    	repository.deleteById(id);
+    	helperMemberDao.deleteById(id);
     	return "刪除成功";
     }
 }

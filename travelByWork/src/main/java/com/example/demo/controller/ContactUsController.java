@@ -22,6 +22,7 @@ public class ContactUsController {
 
     @PostMapping("sendContactUsCopy")
     public ResponseEntity<String> sendCopy(@RequestBody ContactUs contactUs) throws Exception {
+    	String from="travelbywork2023@gmail.com";
         String title="已收到您的來信"+contactUs.getContactType();
         String subject="寄件者姓名:"+contactUs.getName()+"\n"+
                     "寄件者信箱:"+contactUs.getEmail()+"\n"+
@@ -29,7 +30,7 @@ public class ContactUsController {
                     "日期:"+contactUs.getContactDate()+"\n"+
                     "內容:"+contactUs.getMessage();
         String toMail=contactUs.getEmail();
-        new Gmailer().sendMail(toMail,title,subject);
+        new Gmailer().sendMail(from,toMail,title,subject);
         return  ResponseEntity.status(HttpStatus.OK).body("已成功記副本至"+contactUs.getEmail());
     }
 

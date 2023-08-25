@@ -183,6 +183,14 @@
 								document.getElementById('mobile').value=data.mobile;
 								document.getElementById('email').value=data.email;
 								document.getElementById('createtime').value=data.createTime;
+								//店家發布工作欄位
+								document.getElementById('memberIdWorkList').value=data.storememberid;		
+								document.getElementById('storenameWorkList').value=data.storeName;
+								document.getElementById('ownernameWorkList').value=data.ownerName;
+								document.getElementById('addressWorkList').value=data.address;
+								document.getElementById('phoneWorkList').value=data.phone;
+								document.getElementById('mobileWorkList').value=data.mobile;
+								document.getElementById('emailWorkList').value=data.email;						
 							}
 
 							function  update(){
@@ -258,37 +266,26 @@
 					<!-- Work -->
 					<article id="work" class="panel">
                         <header>
-                            <h2>我的小幫手</h2>
+                            <h2>我的職缺</h2>
                         </header>
 
 
 						<div class="row">
                             <table class="table table-light table-hover" border="1">
-                                <tr class="table table-danger">
-                                    <th>小幫手編號</th>
-                                    <th>暱稱</th>
-                                    <th>性別</th>
-                                    <th>年齡</th> 
-                                    <th>照片</th>
-                                    <th>履歷</th>
-                                    <th>取消此位投遞</th>
-                                </tr>
-                                <!-- 
-                                <tr th:each="item : ${helpermember , helperCV}">
-                                    <td th:text="${item.helpermember.helpermemberid }"></td>
-                                    <td th:text="${item.helpermember.username }"></td>
-                                    <td th:text="${item.helpermember.sexual }"></td>
-                                    <td th:text="${item.helpermember.birth }"></td>
-                                    <td th:text="${item.helperCV.helperpohto }"></td>
-                                    <td th:text="${item.helperCV.helperCV }"></td>
-                                    <td>
-                                       <a th:href="@{'/storeworklist/remove/'+${item.storeworklist.storeworklistid }}"
-                                    onclick="return confirm('確定要刪除')" class="btn btn-danger">刪除</a>
-                                        <a th:href="@{'/storeworklist/update/'+${item.storeworklist.storeworklistid }}"
-                                        class="btn btn-primary">修改</a></td>
-                                    </td>
-                                </tr>			
-                                 -->
+                            	<thead>
+									<tr class="table table-danger">
+	                                    <th>我的職缺編號</th>
+	                                    <th>職缺日期</th>
+	                                    <th>工作地區</th>
+	                                    <th>被收藏數量</th> 
+                                	</tr>
+								</thead>
+								<tbody>
+									<tbody id="myjobtable"></tbody>
+									
+								</tbody>
+                                
+                                
                             </table>
                         </div>
                     </article>
@@ -343,14 +340,14 @@
 
 							<div>
 								<div class="row">
-									<input type="hidden" th:value=*{storememberid} id="memberIdWorkList">
+									<input type="hidden" id="memberIdWorkList">
 									
 									<div class="col-3 col-12-medium">
-										<input type="text" th:value=*{storeName} id="storenameWorkList" name="stroename" placeholder="店家名稱" readonly/>
+										<input type="text" id="storenameWorkList" name="stroename" placeholder="店家名稱" readonly/>
 									</div>
 
 									<div class="col-3 col-12-medium">
-										<input type="text" th:value=*{ownerName} id="ownernameWorkList" name="ownername" placeholder="負責人名稱" readonly/>
+										<input type="text" id="ownernameWorkList" name="ownername" placeholder="負責人名稱" readonly/>
 									</div>
 
 									<div class="col-3 col-12-medium">
@@ -399,19 +396,19 @@
 
 
 									<div class="col-12 col-12-medium">
-										<input type="text" th:value=*{address} id="addressWorkList" name="address" placeholder="工作地點（地址）" readonly/>
+										<input type="text" id="addressWorkList" name="address" placeholder="工作地點（地址）" readonly/>
 									</div>
 
 									<div class="col-12 col-12-medium">
-										<input type="text" th:value=*{email} id="emailWorkList" name="email" placeholder="Gmail信箱" readonly/>
+										<input type="text" id="emailWorkList" name="email" placeholder="Gmail信箱" readonly/>
 									</div>
 
 									<div class="col-6 col-12-medium">
-										<input type="text" th:value=*{mobile} id="mobileWorkList" name="mobile" placeholder="手機" readonly/>
+										<input type="text" id="mobileWorkList" name="mobile" placeholder="手機" readonly/>
 									</div>
 
 									<div class="col-6 col-12-medium">
-										<input type="text" th:value=*{phone} id="phoneWorkList" name="phone" placeholder="店家電話號碼" readonly/>
+										<input type="text"  id="phoneWorkList" name="phone" placeholder="店家電話號碼" readonly/>
 									</div>
 
 									<div class="col-4 col-12-medium">
@@ -612,7 +609,7 @@
 					<br>
 					
 					<ul class="actions">
-					<li><a href="homePage" class="button active">返回首頁</a></li>
+					<li><a href="homePageAfterSE" class="button active">返回首頁</a></li>
 					</ul>
 					
 					

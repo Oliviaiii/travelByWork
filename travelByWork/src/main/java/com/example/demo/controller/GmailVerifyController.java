@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.HelperMemberRepository;
+import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.dto.EmailDto;
 import com.example.demo.dto.ForgetPassword;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 public class GmailVerifyController {
     @Autowired
-    private HelperMemberRepository helperMemberRepository;
+    private HelperMemberDao helperMemberDao;
     @Autowired
     private storeMemberDao dao;
     @Autowired
@@ -30,6 +30,7 @@ public class GmailVerifyController {
 
     @PostMapping("mailverify")
     public void mailVerify(@RequestBody EmailDto toEmail) throws Exception {
+    	String from="travelbywork2023@gmail.com";
         String to = toEmail.getToEmail();
         String title = "TravelByWork 註冊確認驗證碼";
         String verifyCode = "";
@@ -38,7 +39,7 @@ public class GmailVerifyController {
         }
         String subject = "請在網頁輸入驗證碼,您的驗證碼為:" + verifyCode;
         lastVerifyCode = verifyCode;
-        new Gmailer().sendMail(to, title, subject);
+        new Gmailer().sendMail(from,to, title, subject);
     }
 
     @PostMapping("confirmMail")
@@ -47,7 +48,7 @@ public class GmailVerifyController {
         HelperMember helperMember = (HelperMember) session.getAttribute("sign");
         if (verify.equals(lastVerifyCode)) {
             if (helperMember != null) {
-                helperMemberRepository.save(helperMember);
+                helperMemberDao.save(helperMember);
                 session.removeAttribute("sign");
                 return ResponseEntity.status(HttpStatus.OK).body(true);
             } else if (storeMember != null) {
@@ -61,7 +62,8 @@ public class GmailVerifyController {
     }
     @PostMapping("/changemailverify")
     public Boolean mailVerify(@RequestBody ForgetPassword forgetPassword) throws Exception {
-        HelperMember helperMember = helperMemberRepository.findHelperMemberByAccount(forgetPassword.getAccount());
+    	String from="travelbywork2023@gmail.com";
+        HelperMember helperMember = helperMemberDao.findHelperMemberByAccount(forgetPassword.getAccount());
         StoreMember member = dao.findStoreMemberByAccount(forgetPassword.getAccount());
         if (helperMember != null) {
             if (helperMember.getEmail().equals(forgetPassword.getEmail())) {
@@ -72,7 +74,7 @@ public class GmailVerifyController {
                 }
                 String subject = "請在網頁輸入驗證碼,您的驗證碼為:" + verifyCode;
                 lastVerifyCode = verifyCode;
-                new Gmailer().sendMail(forgetPassword.getEmail(), title, subject);
+                new Gmailer().sendMail(from,forgetPassword.getEmail(), title, subject);
                 return true;
             } else {
                 return false;
@@ -86,7 +88,7 @@ public class GmailVerifyController {
                 }
                 String subject = "請在網頁輸入驗證碼,您的驗證碼為:" + verifyCode;
                 lastVerifyCode = verifyCode;
-                new Gmailer().sendMail(forgetPassword.getEmail(), title, subject);
+                new Gmailer().sendMail(from,forgetPassword.getEmail(), title, subject);
                 return true;
             } else {
                 return false;
@@ -97,13 +99,13 @@ public class GmailVerifyController {
     }
     @PostMapping("/changepassword")
     public ResponseEntity<Boolean> changePassword(@RequestBody ForgetPassword verify, HttpSession session) {
-        HelperMember helperMember = helperMemberRepository.findHelperMemberByAccount(verify.getAccount());
+        HelperMember helperMember = helperMemberDao.findHelperMemberByAccount(verify.getAccount());
         StoreMember member = dao.findStoreMemberByAccount(verify.getAccount());
         if (helperMember != null) {
             if (verify.getVerify().equals(lastVerifyCode)) {
                 String pwd = passwordEncoder.encode(verify.getPassword());
                 helperMember.setPassword(pwd);
-                helperMemberRepository.save(helperMember);
+                helperMemberDao.save(helperMember);
                 return ResponseEntity.status(HttpStatus.OK).body(true);
             }
         } else if (member != null) {
