@@ -1,14 +1,11 @@
 package com.example.demo.service;
 
-import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.storeMemberDao;
 import com.example.demo.dto.StoreUpdateConfig;
@@ -24,7 +21,7 @@ public class storeMemberService {
 	//判斷資料有無重複
 	public Boolean queryDataExisted(StoreMember member) {	
 		boolean accountExist=dao.existsByAccount(member.getAccount());
-		boolean nameExist=dao.existsByStoreName(member.getStoreName());
+		boolean nameExist=dao.existsByStorename(member.getStorename());
 		boolean emailExist=dao.existsByEmail(member.getEmail());
 		boolean mobileExist=dao.existsByMobile(member.getMobile());
 		if(accountExist || nameExist || emailExist || mobileExist ) {
@@ -82,7 +79,7 @@ public class storeMemberService {
 	public Object updateStoreMember(StoreUpdateConfig updateConfig){
         StoreMember member = dao.findById(updateConfig.getStorememberid()).orElse(null);
         if (member != null) {
-            member.setOwnerName(updateConfig.getOwnername());
+            member.setOwnername(updateConfig.getOwnername());
             member.setAddress(updateConfig.getAddress());
             member.setPhone(updateConfig.getPhone());
             member.setMobile(updateConfig.getMobile());

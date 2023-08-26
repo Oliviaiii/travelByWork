@@ -96,7 +96,7 @@
 				datatype:'json',
 				contentType:'application/json',
 				data:JSON.stringify(obj),
-				success:verify,
+				success:verifyStore,
 				error:function (){$('#warn').html("<h3 style='color: red'>登入失敗,請檢查帳號和密碼是否正確</h3>");
 					setTimeout(function(){$('#warn').html("")},1500)}
 			})

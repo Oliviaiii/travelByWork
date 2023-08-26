@@ -10,15 +10,15 @@ function storeUpdate(event){
 	saveButton.style.display = 'none';
     const storemember = {};
     storemember.storememberid=$("#storememberid").val();
-    storemember.storeName = $("#storename").val();
-    storemember.ownerName = $("#ownername").val();
+    storemember.storename = $("#storename").val();
+    storemember.ownername = $("#ownername").val();
     storemember.account = $("#account").val();
     storemember.password = $("#password").val();
     storemember.email = $("#email").val();
     storemember.mobile = $("#mobile").val();
     storemember.phone = $("#phone").val();
     storemember.address = $("#address").val();
-    storemember.createTime = $("#createtime").val();
+    storemember.createtime = $("#createtime").val();
                  
    $.ajax({
         url: 'storeupdata',					

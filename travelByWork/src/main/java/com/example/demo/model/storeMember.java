@@ -15,9 +15,9 @@ public class StoreMember {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer storememberid;
 	@Column(name="storename")
-	private String storeName;
+	private String storename;
 	@Column(name="ownername")
-	private String ownerName;
+	private String ownername;
 	private String account;
 	private String password;
 	private String email;
@@ -25,50 +25,22 @@ public class StoreMember {
 	private String phone;
 	private String address;
 	@Column(name="createtime")
-	private String createTime;
+	private String createtime;
 	private String role;
 	
 
 	public StoreMember() {}
 
-	public StoreMember(Integer storememberid, String storeName, String ownerName, String account, String password, String email, String mobile, String phone, String address, String createTime, String role) {
-		this.storememberid = storememberid;
-		this.storeName = storeName;
-		this.ownerName = ownerName;
-		this.account = account;
-		this.password = password;
-		this.email = email;
-		this.mobile = mobile;
-		this.phone = phone;
-		this.address = address;
-		this.createTime = createTime;
-		this.role = role;
-	}
 
-	public String getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+
+
 	public Integer getStorememberid() {
 		return storememberid;
 	}
 	public void setStorememberid(Integer storememberid) {
 		this.storememberid = storememberid;
 	}
-	public String getStoreName() {
-		return storeName;
-	}
-	public void setStoreName(String storeName) {
-		this.storeName = storeName;
-	}
-	public String getOwnerName() {
-		return ownerName;
-	}
-	public void setOwnerName(String ownerName) {
-		this.ownerName = ownerName;
-	}
+
 	public String getAccount() {
 		return account;
 	}
@@ -114,20 +86,74 @@ public class StoreMember {
 		this.role = role;
 	}
 
-	@Override
-	public String toString() {
-		return "storeMember{" +
-				"storememberid=" + storememberid +
-				", storeName='" + storeName + '\'' +
-				", ownerName='" + ownerName + '\'' +
-				", account='" + account + '\'' +
-				", password='" + password + '\'' +
-				", email='" + email + '\'' +
-				", mobile='" + mobile + '\'' +
-				", phone='" + phone + '\'' +
-				", address='" + address + '\'' +
-				", createTime='" + createTime + '\'' +
-				", role='" + role + '\'' +
-				'}';
+
+
+
+	public String getStorename() {
+		return storename;
 	}
+
+
+
+
+	public void setStorename(String storename) {
+		this.storename = storename;
+	}
+
+
+
+
+	public String getOwnername() {
+		return ownername;
+	}
+
+
+
+
+	public void setOwnername(String ownername) {
+		this.ownername = ownername;
+	}
+
+
+
+
+	public String getCreatetime() {
+		return createtime;
+	}
+
+
+
+
+	public void setCreatetime(String createtime) {
+		this.createtime = createtime;
+	}
+
+
+
+
+	public StoreMember(Integer storememberid, String storename, String ownername, String account, String password,
+			String email, String mobile, String phone, String address, String createtime, String role) {
+		super();
+		this.storememberid = storememberid;
+		this.storename = storename;
+		this.ownername = ownername;
+		this.account = account;
+		this.password = password;
+		this.email = email;
+		this.mobile = mobile;
+		this.phone = phone;
+		this.address = address;
+		this.createtime = createtime;
+		this.role = role;
+	}
+
+
+
+
+	
+
+
+
+
+
 }

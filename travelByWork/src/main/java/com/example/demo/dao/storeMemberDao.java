@@ -12,7 +12,7 @@ public interface storeMemberDao extends JpaRepository<StoreMember,Integer>{
 
 	public boolean existsByAccount(String account);
 	public boolean existsByEmail(String email);
-	public boolean existsByStoreName(String name);
+	public boolean existsByStorename(String name);
 	public boolean existsByMobile(String mobile);
 	public StoreMember findByAccountAndPassword(String account,String password);
 	StoreMember findStoreMemberByAccount(String account);

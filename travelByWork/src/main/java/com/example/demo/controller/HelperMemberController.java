@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.helpercvDao;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.dto.UpdateConfig;
@@ -9,26 +8,17 @@ import com.example.demo.model.StoreMember;
 import com.example.demo.model.helpercv;
 import com.example.demo.service.HelperMemberService;
 import com.example.demo.service.storeMemberService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.context.SecurityContextImpl;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpSession;
 
 @RestController
 public class HelperMemberController {
@@ -36,8 +26,6 @@ public class HelperMemberController {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private HelperMemberService helperMemberService;
-    @Autowired
-    private HelperMemberDao helperMemberDao;
     @Autowired
     private storeMemberService service;
     @Autowired
@@ -129,10 +117,10 @@ public class HelperMemberController {
     }
     @PostMapping("/googleLogin")
     public String googlelogin(@RequestBody HelperMember helperMember,HttpSession session) {
-    	HelperMember member=helperMemberDao.findByAccount(helperMember.getAccount());
+    	HelperMember member=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
     	if(member==null) {
     		helperMemberService.createHelperMember(helperMember);
-    		HelperMember newMember=helperMemberDao.findByAccount(helperMember.getAccount());
+    		HelperMember newMember=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
     		Map<String, Object> userMap = new HashMap<>();
             userMap.put("helperMember", newMember);
     		session.setAttribute("user",userMap);
@@ -156,7 +144,21 @@ public class HelperMemberController {
     //刪除helperMember
     @DeleteMapping("/deleteHelperMemebr/{id}")
     public String deleteHelperMemebr(@PathVariable int id) {
-    	helperMemberDao.deleteById(id);
+    	helpercvdao.deleteById(id);
     	return "刪除成功";
+    }
+
+    @GetMapping("/getLoginSession")
+    public ResponseEntity<Object> getLoginSession(HttpSession session) {
+        String securityContext = SecurityContextHolder.getContext().getAuthentication().getName();
+        HelperMember helperMember = helperMemberService.getHelperMemberByAccount(securityContext);
+        StoreMember member = service.findStoreMemberByAccount(securityContext);
+        if (helperMember != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(helperMember);
+        } else if (member != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(member);
+        } else {
+            return ResponseEntity.status(HttpStatus.OK).body("無此會員");
+        }
     }
 }

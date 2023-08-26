@@ -113,38 +113,13 @@ $(document).ready(function() {
                 row.append($('<td>').append(callButton));
                 
 				
-                // 添加 "收藏" 按鈕
-                var commentButton = $('<button>').addClass('commentButton').text('收藏');
-                commentButton.data('storeworklistid', postJob.storeworklistid); 
-                row.append($('<td>').append(commentButton));
+              
 
                 shareDataBody.append(row);
             });
             
             
-            // 收藏
-            $(document).on('click', '.commentButton', function() {
-				var storeworklistid = $(this).data('storeworklistid');                
-                var helpermemberid=$("#helpermemberid").val(); 
-                var helperJob={};
-                helperJob.storeworklistid=storeworklistid;
-                helperJob.helpermemberid=helpermemberid;
-                helperJob.favorite=true;
-                
-				if(helpermemberid===""){
-					alert("請先登入");
-				}else{
-					$.ajax({
-						url: 'addHelperJob',					
-				        type: 'post',
-				        dataType: 'text',  					
-				        contentType: 'application/json', 	    
-				        data: JSON.stringify(helperJob),								
-				        success: function(data){alert(data);},					 
-				        error: function (myerror) { console.log(myerror) ;}
-					});
-				}
-            });
+           
 
 
             // 使用事件代理處理動態生成的 "聯絡方式內容" 按鈕
@@ -371,17 +346,17 @@ $(document).ready(getStore)
 		document.getElementById('storememberid').value=data.storememberid;
 		document.getElementById('account').value=data.account;
 		document.getElementById('password').value=data.password;
-		document.getElementById('storename').value=data.storeName;
-		document.getElementById('ownername').value=data.ownerName;
+		document.getElementById('storename').value=data.storename;
+		document.getElementById('ownername').value=data.ownername;
 		document.getElementById('address').value=data.address;
 		document.getElementById('phone').value=data.phone;
 		document.getElementById('mobile').value=data.mobile;
 		document.getElementById('email').value=data.email;
-		document.getElementById('createtime').value=data.createTime;
+		document.getElementById('createtime').value=data.createtime;
 		//店家發布工作欄位
 		document.getElementById('memberIdWorkList').value=data.storememberid;		
-		document.getElementById('storenameWorkList').value=data.storeName;
-		document.getElementById('ownernameWorkList').value=data.ownerName;
+		document.getElementById('storenameWorkList').value=data.storename;
+		document.getElementById('ownernameWorkList').value=data.ownername;
 		document.getElementById('addressWorkList').value=data.address;
 		document.getElementById('phoneWorkList').value=data.phone;
 		document.getElementById('mobileWorkList').value=data.mobile;
@@ -418,44 +393,44 @@ $(document).ready(getStore)
 ///
 $("#saveButton").click(update)
 							
-							// 獲取編輯按鈕和保存按鈕
-							const editButton = document.getElementById('editButton');
-							const saveButton = document.getElementById('saveButton');
+		// 獲取編輯按鈕和保存按鈕
+		const editButton = document.getElementById('editButton');
+		const saveButton = document.getElementById('saveButton');
 
-							 // 獲取表單元素 輸入欄位
-							const form = document.getElementById('userForm');
-							const inputs = form.querySelectorAll('input');
-							
-							// 編輯輸入欄位 切換按鈕
-							function enableInputs() {
-								for (const input of inputs) {
-									const inputName = input.getAttribute('name');
-									// 排除特定的輸入欄位
-									if (inputName !== 'storememberid' && inputName !== 'storename' 
-									&& inputName !== 'account' && inputName !== 'email' 
-									&& inputName !== 'createtime') {
-										input.removeAttribute('disabled');
-									}
-								}
-								editButton.style.display = 'none';
-								saveButton.style.display = 'inline-block';
-							}
+		 // 獲取表單元素 輸入欄位
+		const form = document.getElementById('userForm');
+		const inputs = form.querySelectorAll('input');
+		
+		// 編輯輸入欄位 切換按鈕
+		function enableInputs() {
+			for (const input of inputs) {
+				const inputName = input.getAttribute('name');
+				// 排除特定的輸入欄位
+				if (inputName !== 'storememberid' && inputName !== 'storename' 
+				&& inputName !== 'account' && inputName !== 'email' 
+				&& inputName !== 'createtime') {
+					input.removeAttribute('disabled');
+				}
+			}
+			editButton.style.display = 'none';
+			saveButton.style.display = 'inline-block';
+		}
 
-							
-							// 鎖定輸入欄位 切換按鈕
-							function disableInputs() {
-								for (const input of inputs) {
-									input.setAttribute('disabled', 'true');
-								}
-								editButton.style.display = 'inline-block';
-								saveButton.style.display = 'none';
-							}
-							
-							// 監聽事件
-							editButton.addEventListener('click', enableInputs);
-							saveButton.addEventListener('click', disableInputs);
-							
-							// 初始
-							disableInputs();
+		
+		// 鎖定輸入欄位 切換按鈕
+		function disableInputs() {
+			for (const input of inputs) {
+				input.setAttribute('disabled', 'true');
+			}
+			editButton.style.display = 'inline-block';
+			saveButton.style.display = 'none';
+		}
+		
+		// 監聽事件
+		editButton.addEventListener('click', enableInputs);
+		saveButton.addEventListener('click', disableInputs);
+		
+		// 初始
+		disableInputs();
 
 
