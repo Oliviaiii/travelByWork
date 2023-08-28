@@ -13,6 +13,6 @@ let storeMember={};
 
 function setSession(data){
 	var spanElement = document.getElementById("usernameAfterLogin");
-	spanElement.textContent = " "+data.storeName;
+	spanElement.textContent = " "+data.storename;
 	storeMember=data;
 }	

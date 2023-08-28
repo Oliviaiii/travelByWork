@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.HelperMemberDao;
 import com.example.demo.dao.helpercvDao;
 import com.example.demo.dto.AccountConfig;
 import com.example.demo.dto.UpdateConfig;
@@ -31,6 +32,8 @@ public class HelperMemberController {
     @Autowired
 	private helpercvDao helpercvdao;
     
+    @Autowired
+    private HelperMemberDao dao;
     @PostMapping("/gethelpermember")
     public void getHelperMember(@RequestBody AccountConfig accountConfig) {
 
@@ -117,7 +120,8 @@ public class HelperMemberController {
     }
     @PostMapping("/googleLogin")
     public String googlelogin(@RequestBody HelperMember helperMember,HttpSession session) {
-    	HelperMember member=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
+
+    	HelperMember member=helperMemberService.getHelperMemberByEmail(helperMember.getEmail());
     	if(member==null) {
     		helperMemberService.createHelperMember(helperMember);
     		HelperMember newMember=helperMemberService.getHelperMemberByAccount(helperMember.getAccount());
@@ -144,7 +148,7 @@ public class HelperMemberController {
     //刪除helperMember
     @DeleteMapping("/deleteHelperMemebr/{id}")
     public String deleteHelperMemebr(@PathVariable int id) {
-    	helpercvdao.deleteById(id);
+    	dao.deleteById(id);
     	return "刪除成功";
     }
 

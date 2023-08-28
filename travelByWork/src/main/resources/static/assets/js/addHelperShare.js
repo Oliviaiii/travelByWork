@@ -30,7 +30,7 @@ function addHelperShare(event){
 
 function result(data){
     if (data === "心得新增成功") {
-        window.location.href = "/share"; 
+        window.location.href = "/shareAfterHP"; 
     } else {
         alert(data); 
     }
@@ -66,10 +66,7 @@ $(document).ready(function() {
                 row.append($('<td>').append(detailButton));
 
 
-                // 添加 "留言" 按鈕
-                var commentButton = $('<button>').addClass('commentButton').text('留言');
-                commentButton.data('share-id', share.shareId); // 假設每個分享都有 shareId
-                row.append($('<td>').append(commentButton));
+                
 
                 shareDataBody.append(row);
             });
@@ -92,11 +89,7 @@ $(document).ready(function() {
             });
             
 
-           // 使用事件代理處理動態生成的 "留言" 按鈕
-           $(document).on('click', '.commentButton', function() {
-            var share = $(this).data('share'); // 使用 share 而不是 shareId
-            window.location.href = '/homePage' ;
-        });
+          
 
 
         }, 

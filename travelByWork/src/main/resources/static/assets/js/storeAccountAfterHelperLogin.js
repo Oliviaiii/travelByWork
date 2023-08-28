@@ -46,7 +46,7 @@ function result(data){
 $("#storeworkListForm").submit(storework);
 
 
-function setSession(data){
+function setId(data){
 	document.getElementById('helpermemberid').value=data.helperMember.helpermemberid;
 }
 
@@ -57,13 +57,13 @@ $(document).ready(function() {
 			url: '/getGoogleSession',
 			type: 'get',
 			datatype: 'json',
-			success:setSession
+			success:setId
 	    });
      	$.ajax({
 			url: '/getSession',
 			type: 'get',
 			datatype: 'json',
-			success:setSession
+			success:setId
 		});
     // Get postJob data from the backend
     $.ajax({

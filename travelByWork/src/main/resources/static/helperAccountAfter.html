@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>小幫手資料</title>
+		<title>打工換宿趣-小幫手資料</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets1/css/main.css" />
@@ -284,6 +284,12 @@
 							document.getElementById('memberIdAddForm').value=data.helpercv.helpermemberid;
 							document.getElementById('accountAddForm').value=data.helpercv.account;
 						}
+
+						//履歷大頭照用
+						document.getElementById('helpercvlink').value=data.helpercv.helpercvlink;
+							document.getElementById('helperphoto').value=data.helpercv.helperphoto;
+							var imgElement = document.getElementById('myphoto');
+					        imgElement.src = data.helpercv.helperphoto+".jpg";
 
 						function  update(){
 							var obj=new Object();

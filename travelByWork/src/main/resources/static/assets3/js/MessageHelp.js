@@ -73,7 +73,7 @@ $(document).ready(function() {
                             var contextArea = $("#additionalText").val();
                             obj.toEmail = replyTo.email;
                             obj.title = "打工換宿網" + replyTo.contactType + "之事宜";
-                            obj.subject = "親愛的" + replyTo.name + "你好，我們是打工換宿網，於" + replyTo.contactDate + "收到您有關於" + replyTo.contactType + "的來信！" + "\n" +
+                            obj.subject = "親愛的" + replyTo.name + "你好，我們是打工換宿趣，於" + replyTo.contactDate + "收到您有關於" + replyTo.contactType + "的來信！" + "\n" +
                                 "您所傳送的內容如下：" + "\n" + replyTo.message + "\n" + "（以下就是我們回信的內容）" + "\n" + contextArea;
                             $.ajax({
                                 url: '/sendReply',
