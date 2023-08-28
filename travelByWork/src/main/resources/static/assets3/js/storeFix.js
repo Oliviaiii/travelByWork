@@ -14,11 +14,11 @@ $(document).ready(function() {
                 const row = "<tr>" +
                     "<td>" + item.storememberid + "</td>" +
                     "<td>" + item.account + "</td>" +
-                    "<td>" + item.ownerName + "</td>" +
-                    "<td>" + item.storeName + "</td>" +
+                    "<td>" + item.ownername + "</td>" +
+                    "<td>" + item.storename + "</td>" +
                     "<td>" + item.mobile + "</td>" +
                     "<td>" + item.phone + "</td>" +
-                    "<td>" + item.createTime + "</td>" +
+                    "<td>" + item.createtime + "</td>" +
                     "<td><button class='delete-btn' data-id='" + item.storememberid + "'>删除</button></td>" +
                     "</tr>";
                 tableBody.append(row);
