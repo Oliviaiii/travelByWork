@@ -11,17 +11,30 @@ $(document).ready(function() {
             tableBody.empty();
 
             data.forEach(function(item) {
-                const row = "<tr>" +
-                    "<td>" + item.storeworklistid + "</td>" +
-                    "<td>" + item.storememberid + "</td>" +
-                    "<td>" + item.ownerName + "</td>" +
-                    "<td>" + item.storeName + "</td>" +
-                    "<td>" + item.location + "</td>" +
-                    "<td>" + item.mobile + "</td>" +
-                    "<td>" + item.workupdatetime + "</td>" +
-                    "<td><button class='delete-btn' data-id='" + item.storeworklistid + "'>删除</button></td>" +
-                    "</tr>";
-                tableBody.append(row);
+				
+				 $.ajax({
+						url: '/getJobByWorkListIdSize/'+item.storeworklistid,
+						type: 'get',
+						datatype: 'json',
+						success:function(data){
+							const size=data;
+							const row = "<tr>" +
+		                    "<td>" + item.storeworklistid + "</td>" +
+		                    "<td>" + item.storememberid + "</td>" +
+		                    "<td>" + item.ownerName + "</td>" +
+		                    "<td>" + item.storeName + "</td>" +
+		                    "<td>" + item.location + "</td>" +
+		                    "<td>" + item.mobile + "</td>" +
+		                    "<td>" + size + "</td>" +
+		                    "<td>" + item.workupdatetime + "</td>" +
+		                    "<td><button class='delete-btn' data-id='" + item.storeworklistid + "'>删除</button></td>" +
+		                    "</tr>";
+		                	tableBody.append(row);
+							 
+						},
+						error: function (error) { console.log(error); }
+					});
+                
             });
             $(".delete-btn").click(function() {
                 const jobId = $(this).data("id");          

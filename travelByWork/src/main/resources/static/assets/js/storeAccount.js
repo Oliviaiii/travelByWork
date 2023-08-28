@@ -38,7 +38,7 @@ function storework(event){
 }
 function result(data){
     if(data === "新增成功"){
-        window.location.href = "/postJobAfterSE";
+        window.location.href = "/postJobAfterSE.html";
     } else {
         alert(data);
     }

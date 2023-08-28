@@ -41,7 +41,7 @@
 					<nav id="nav">
 						<a href="#home" class="icon solid fa-home"><span>個人資料</span></a>
 						<a href="#work" class="icon solid fa-folder"><span>履歷</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>已投遞店家</span></a>
+						<a href="#contact" class="icon solid fa-envelope"><span>已收藏店家</span></a>
 						<a href="#shareMe" class="icon fa-solid fa-heart"><span>分享心得</span></a>
 					</nav>
 
@@ -283,13 +283,15 @@
 							document.getElementById('usernameAddForm').value=data.helpercv.username;
 							document.getElementById('memberIdAddForm').value=data.helpercv.helpermemberid;
 							document.getElementById('accountAddForm').value=data.helpercv.account;
-						}
 
-						//履歷大頭照用
-						document.getElementById('helpercvlink').value=data.helpercv.helpercvlink;
+							//履歷大頭照用
+							document.getElementById('helpercvlink').value=data.helpercv.helpercvlink;
 							document.getElementById('helperphoto').value=data.helpercv.helperphoto;
 							var imgElement = document.getElementById('myphoto');
 					        imgElement.src = data.helpercv.helperphoto+".jpg";
+						}
+
+						
 
 						function  update(){
 							var obj=new Object();

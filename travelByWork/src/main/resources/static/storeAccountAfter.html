@@ -43,8 +43,8 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<a href="#home" class="icon solid fa-home"><span>基本資料</span></a>
-						<a href="#work" class="icon fa-solid fa-heart"><span>我的小幫手</span></a>
-						<a href="#contact" class="icon solid fa-envelope"><span>查看通知</span></a>
+						<a href="#work" class="icon fa-solid fa-heart"><span>已發出職缺</span></a>
+						<!-- <a href="#contact" class="icon solid fa-envelope"><span>查看通知</span></a> -->
 						<a href="#shareMe" class="icon solid fa-folder"><span>新增職缺</span></a>
 					</nav>
 
@@ -159,51 +159,7 @@
                         <button id="logout" type="button">登出</button>
                     </article>
 	
-						<!--  
-						<script>
-						$("#saveButton").click(update)
-							
-							// 獲取編輯按鈕和保存按鈕
-							const editButton = document.getElementById('editButton');
-							const saveButton = document.getElementById('saveButton');
-
-							 // 獲取表單元素 輸入欄位
-							const form = document.getElementById('userForm');
-							const inputs = form.querySelectorAll('input');
-							
-							// 編輯輸入欄位 切換按鈕
-							function enableInputs() {
-								for (const input of inputs) {
-									const inputName = input.getAttribute('name');
-									// 排除特定的輸入欄位
-									if (inputName !== 'storememberid' && inputName !== 'storename' 
-									&& inputName !== 'account' && inputName !== 'email' 
-									&& inputName !== 'createtime') {
-										input.removeAttribute('disabled');
-									}
-								}
-								editButton.style.display = 'none';
-								saveButton.style.display = 'inline-block';
-							}
-
-							
-							// 鎖定輸入欄位 切換按鈕
-							function disableInputs() {
-								for (const input of inputs) {
-									input.setAttribute('disabled', 'true');
-								}
-								editButton.style.display = 'inline-block';
-								saveButton.style.display = 'none';
-							}
-							
-							// 監聽事件
-							editButton.addEventListener('click', enableInputs);
-							saveButton.addEventListener('click', disableInputs);
-							
-							// 初始
-							disableInputs();
-							</script>
-							-->
+						
 						
 
 					<!-- Work -->
@@ -235,7 +191,7 @@
 					
 
 					<!-- Contact -->
-                    <article id="contact" class="panel">
+                    <!-- <article id="contact" class="panel">
                         <header>
                             <h2>系統通知</h2>
                         </header>
@@ -268,7 +224,7 @@
                                 </div>
                             </div>
                         </form>
-                    </article>
+                    </article> -->
 
 					
 					
