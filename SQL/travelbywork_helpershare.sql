@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `helpershare` (
   `content` varchar(300) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   `updatedate` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_bin DEFAULT NULL,
   PRIMARY KEY (`helpershareid`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `helpershare` (
 
 LOCK TABLES `helpershare` WRITE;
 /*!40000 ALTER TABLE `helpershare` DISABLE KEYS */;
-INSERT INTO `helpershare` VALUES (1,'001','a001','LeeSeungHyub','2023/01/08','2023/10/31','Seoul','FNC','餐廳','駐唱','10','好極了','2023/12/1'),(2,NULL,NULL,NULL,'2023-08-10','2023-08-16','NewTaipei',NULL,'hostol',NULL,'five',NULL,'2023-08-16 23:20:36'),(3,NULL,NULL,NULL,'2023-08-07','2023-08-16','Changhua',NULL,'bistro',NULL,'five',NULL,'2023-08-16 23:26:32'),(4,NULL,NULL,NULL,'2023-08-08','2023-08-16','Keelung',NULL,'bistro',NULL,'four',NULL,'2023-08-17 00:24:44'),(5,NULL,NULL,NULL,'2023-08-08','2023-08-16','Keelung',NULL,'bistro',NULL,'four',NULL,'2023-08-17 00:24:44'),(6,NULL,NULL,NULL,'2023-08-02','2023-08-15','Hsinchu',NULL,'brunch',NULL,'four',NULL,'2023-08-17 00:25:38'),(7,NULL,NULL,NULL,'2023-08-02','2023-08-16','Nantou',NULL,'farm',NULL,'eight',NULL,'2023-08-17 00:27:12'),(8,NULL,NULL,NULL,'2023-08-01','2023-08-16','Nantou',NULL,'bistro','hvhk','seven',NULL,'2023-08-17 00:51:05'),(9,NULL,NULL,NULL,'2023-08-01','2023-08-16','Taoyuan',NULL,'divestore','hj','eight',NULL,'2023-08-17 00:55:34'),(10,NULL,NULL,NULL,'2023-08-01','2023-08-16','Yunlin',NULL,'ohmiyaga','madvl','six',NULL,'2023-08-17 09:31:29'),(11,NULL,NULL,NULL,'2023-08-01','2023-08-17','Keelung',NULL,'divestore','NKL','seven','NKXZL','2023-08-17 09:42:28'),(12,NULL,NULL,NULL,'2023-08-01','2023-08-17','Tainan',NULL,'brunch','nksl','six','nakl','2023-08-17 09:43:33'),(13,NULL,NULL,NULL,'2023-08-01','2023-08-17','Taoyuan','cnals','bistro','nsal','five','ncsI','2023-08-17 09:47:32'),(14,NULL,NULL,'test1','2023-08-02','2023-08-22','Taipei','s','restuarant','wqd','whatthefuck','dqwdq','2023-08-18 15:25:37'),(15,NULL,NULL,'test1','2023-08-18','2023-09-07','NewTaipei','d','restuarant','wdadad','one','awdawda','2023-08-18 15:29:12'),(16,NULL,NULL,'test1','2023-08-19','2023-08-30','Taipei','d','hostol','dawda','three','dawda','2023-08-18 15:39:14'),(17,NULL,NULL,'test1','2023-08-09','2023-08-23','Taipei','s','hostol','erhgrwe','two','wergwg','2023-08-18 15:51:57'),(18,NULL,NULL,'test1','2023-08-18','2023-08-31','NewTaipei','s','restuarant','wdadq','two','dawda','2023-08-18 16:03:12');
+INSERT INTO `helpershare` VALUES (19,'31','asd12301','大波霸女孩','2020-07-16','2020-08-27','GreenIsland','釣漁人','restuarant','外場接待','ten','讚讚讚喔','2023-08-25 11:14:35'),(20,'31','asd12301','女孩','2023-08-21','2023-09-04','GreenIsland','不如來潛水','divestore','導潛','six','讚死','2023-08-25 15:45:32');
 /*!40000 ALTER TABLE `helpershare` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:07

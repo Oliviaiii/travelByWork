@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `helpermember` (
   UNIQUE KEY `personal` (`username`) /*!80000 INVISIBLE */,
   UNIQUE KEY `email` (`email`) /*!80000 INVISIBLE */,
   UNIQUE KEY `acc` (`account`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `helpermember` (
 
 LOCK TABLES `helpermember` WRITE;
 /*!40000 ALTER TABLE `helpermember` DISABLE KEYS */;
-INSERT INTO `helpermember` VALUES (8,'abc','test','test','example','test2','00001111','test','2023-08-16','test','test','ROLE_HELPER'),(17,'C','C','C','C12345','ccc@gmail.com','0979810510','台灣','2023-08-16','0860510','male','ROLE_HELPER'),(19,'pete','Ryan','a123','a123','aaa@gmail.com','0933112233','台灣','2023-08-19','50/02/05','male','ROLE_HELPER'),(20,'Loggin','try Loggin','account','Password','example@gmail.com','0925254433','台灣','2023-08-19','700801','female',''),(21,'test','demo','login','$2a$10$pJQbHNnRqgd6xQDQfbXmLORMQCO0/M8LtCvbXOaFXawXG082rndU2','tryagain@gmail.com','0983621413','台灣','2023-08-20','851021','male',NULL),(22,'SB','SBB','qwert','$2a$10$X0KyuKQRbTSctyEf.RC.HOr4gk0/dlDLEM/t.QoMv/avo39.y6GZC','aec@gmail.com','00000000','台灣','2023-08-20','800427','male','ROLE_USER'),(27,NULL,'換宿打工','travelbywork2023@gmail.com',NULL,'travelbywork2023@gmail.com',NULL,'zh-TW','2023-08-22',NULL,NULL,NULL),(28,NULL,'Olivia iii','rainy57091224@gmail.com',NULL,'rainy57091224@gmail.com',NULL,'zh-TW','2023-08-22',NULL,NULL,NULL),(29,'XDD','ZXC123','ZXC123','$2a$10$MD5TB.AfQnQLAHllcBS73eVSFMEOga0dlk48WjukJ3xy7bD26eIoy','1347865v@gmail.com','0985646133','台灣','2023-08-24','2023-08-01','male','ROLE_USER'),(30,'QAZ123','QAZ123','QAZ123','$2a$10$UcMEbjtMB.gt5Eq6jCgdP.NHEG.7IEUU4ib6eg68709T0UBURlnbK','craigchen510@gmail.com','0900111223','台灣','2023-08-24','2023-08-01','male','ROLE_USER');
+INSERT INTO `helpermember` VALUES (31,'女孩','林依晨','asd12301','$2a$10$tapdb0ZuijbPROmyMSqs2OYcIsSkGV4qANiJVNFTojhA8kbttq6mi','rainy57091224@gmail.com','0911111111','台灣','2023-08-25','2023-08-01','female','ROLE_USER'),(33,'承協老婆','棠伽灰','zsx12303','$2a$10$R87JZL5LqDtLtfVc51siIuUZdSyncFJcvkVXbxa1rCc3qCP0JFO.m','pipi870108@gmail.com','0933333333','韓國','2023-08-25','2023-08-30','female','ROLE_USER'),(34,'烏來山道神','金城武','asd12304','$2a$10$xxKi49czgpJBVEazCZV3MeFraKhpjwyRcn0akSZwdt/cRvAvjWaR6','1347865v@gmail.com','0927361837','台灣','2023-08-25','2023-08-30','male','ROLE_USER'),(35,'研究生讓你研究生','吳康仁','asd12305','$2a$10$5KlFo1kEflaoKHZhCKDNcOtI/Gw..QqVlGX2Js3ighxH9kXmvPcde','craigchen510@gmail.com','0935343221','台灣','2023-08-25','2023-09-07','male','ROLE_USER'),(36,'不吃早餐的帥哥','大熱狗','asd12306','$2a$10$SMt8dkTOoZKjza9E895N7OBePDaFSW3r1wOv2Cy5ooayxOUYo2e7.','pij2baa34kan@gmail.com','0924235635','台灣','2023-08-25','2023-08-24','male','ROLE_USER');
 /*!40000 ALTER TABLE `helpermember` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:06

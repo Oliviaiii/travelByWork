@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +27,15 @@ public class PostImportantController {
 	}
 
 	// 顯示所有文章列表
-	@GetMapping 
+	@GetMapping
 	public String listPosts(Model model) {
 		model.addAttribute("posts", postImportantService.getAllPosts());
 		return "post-list"; // 返回文章列表的視圖模板名稱
 	}
+
 	@ResponseBody
 	@GetMapping("/allpost")
-	public List<PostImportant> getAllPost(){
+	public List<PostImportant> getAllPost() {
 		return postImportantService.getAllPosts();
 	}
 

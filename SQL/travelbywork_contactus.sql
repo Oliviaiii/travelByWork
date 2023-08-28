@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -30,7 +30,7 @@ CREATE TABLE `contactus` (
   `message` varchar(255) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`contactusid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `contactus` (
 
 LOCK TABLES `contactus` WRITE;
 /*!40000 ALTER TABLE `contactus` DISABLE KEYS */;
-INSERT INTO `contactus` VALUES (1,'2023-08-24','檢舉店家職缺','craigchen510@gmail.com','12345','ACX'),(2,'2023-08-24','檢舉店家職缺','craigchen510@gmail.com','12345','ACX'),(3,'2023-08-24','檢舉心得分享','craigchen510@gmail.com','ABCDE','ABCDE');
+INSERT INTO `contactus` VALUES (4,'2023-08-25','檢舉店家職缺','rainy57091224@gmail.com','好爛','oli'),(5,'','意見分享','rainy57091224@gmail.com','酷喔','板橋林依晨'),(6,'2023-08-25','檢舉心得分享','rainy57091224@gmail.com','你們超棒的','ABCDE'),(7,'2023-08-25','意見分享','rainy57091224@gmail.com','faefkmkgma','ABCDE'),(8,'2023-08-25','檢舉心得分享','rainy57091224@gmail.com','qwefqwfqqf','afeawf');
 /*!40000 ALTER TABLE `contactus` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:07

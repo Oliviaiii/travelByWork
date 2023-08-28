@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -38,6 +38,7 @@ CREATE TABLE `helpercv` (
 
 LOCK TABLES `helpercv` WRITE;
 /*!40000 ALTER TABLE `helpercv` DISABLE KEYS */;
+INSERT INTO `helpercv` VALUES (31,'asd12301','','https://imgur.com/wK5IslZ','大波霸女孩');
 /*!40000 ALTER TABLE `helpercv` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:09

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -31,7 +31,7 @@ CREATE TABLE `adminmember` (
   `password` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`adminmemberid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `adminmember` (
 
 LOCK TABLES `adminmember` WRITE;
 /*!40000 ALTER TABLE `adminmember` DISABLE KEYS */;
-INSERT INTO `adminmember` VALUES (1,'test','0824','081002','test','test','test');
+INSERT INTO `adminmember` VALUES (3,'zsx','2023-08-25','0988796571','ChihYun Lin','Z11111','oli'),(4,'asd123','2023-08-25','0975728362','艾咪','Z11111','amy'),(5,'qaz123','2023-08-25','0937284734','吉納','Z11111','gina'),(6,'qsc','2023-08-25','0928478373','安迪','Z11111','andy');
 /*!40000 ALTER TABLE `adminmember` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:09

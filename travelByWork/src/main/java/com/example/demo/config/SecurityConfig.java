@@ -3,7 +3,6 @@ package com.example.demo.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -14,44 +13,36 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 public class SecurityConfig {
-	
-    private final AuthenticationConfiguration authConfiguration;
 
-    public SecurityConfig(AuthenticationConfiguration authConfiguration) {
-        this.authConfiguration = authConfiguration;
-    }
+	private final AuthenticationConfiguration authConfiguration;
 
-    @Bean
-    public AuthenticationManager authenticationManager() throws Exception {
-        return authConfiguration.getAuthenticationManager();
-    }
+	public SecurityConfig(AuthenticationConfiguration authConfiguration) {
+		this.authConfiguration = authConfiguration;
+	}
 
-    @Bean
-    public SecurityFilterChain projectSecurityConfig( HttpSecurity http) throws Exception {
-        http.csrf((csrf) -> csrf.disable())
-                .securityContext(securityContext->securityContext.requireExplicitSave(false))
-                .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS).maximumSessions(300))
-                .addFilterBefore(new AjaxAuthenticationFilter(this.authenticationManager()), UsernamePasswordAuthenticationFilter.class)
-                .authorizeHttpRequests((requests) -> requests
-                		.anyRequest().permitAll())
-                .formLogin()
-                .loginPage("/gethelpermember")
-                .usernameParameter("account")
-                .and()
-                .logout()
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .logoutUrl("/clearSession")
-                .logoutSuccessUrl("/homePage.html")
-                .permitAll();
+	@Bean
+	public AuthenticationManager authenticationManager() throws Exception {
+		return authConfiguration.getAuthenticationManager();
+	}
 
-        return http.build();
+	@Bean
+	public SecurityFilterChain projectSecurityConfig(HttpSecurity http) throws Exception {
+		http.csrf((csrf) -> csrf.disable())
+				.securityContext(securityContext -> securityContext.requireExplicitSave(false))
+				.sessionManagement(
+						session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS).maximumSessions(300))
+				.addFilterBefore(new AjaxAuthenticationFilter(this.authenticationManager()),
+						UsernamePasswordAuthenticationFilter.class)
+				.authorizeHttpRequests((requests) -> requests.anyRequest().permitAll()).formLogin()
+				.loginPage("/gethelpermember").usernameParameter("account").and().logout().invalidateHttpSession(true)
+				.deleteCookies("JSESSIONID").logoutUrl("/clearSession").logoutSuccessUrl("/homePage.html").permitAll();
 
+		return http.build();
 
-    }
+	}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }

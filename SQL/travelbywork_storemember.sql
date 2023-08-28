@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for macos12 (x86_64)
 --
 -- Host: localhost    Database: travelbywork
 -- ------------------------------------------------------
@@ -35,7 +35,7 @@ CREATE TABLE `storemember` (
   `storename` varchar(255) DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`storememberid`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `storemember` (
 
 LOCK TABLES `storemember` WRITE;
 /*!40000 ALTER TABLE `storemember` DISABLE KEYS */;
-INSERT INTO `storemember` VALUES (1,'test123','testaddress','2023-08-14 10:12:35.168000','test@gmail.com','123','test','test','1234','test',NULL),(2,'A123','AAAaddress','2023-08-14 10:13:58.461000','AAA@gmail.com','0800','ownerA','AAAAAA','0989','Astore',NULL),(3,'B123','BBBaddress','2023-08-14 10:14:38.042000','BBB@gmail.com','0987','ownerB','BBBBBB','9999','Bstore',NULL),(4,'C123','CCCaddress','2023-08-14 10:15:10.295000','CCC@gmail.com','6543','ownerC','CCCCCC','8888','Cstore',NULL),(5,'D123','DDDaddress','2023-08-14 10:15:39.830000','DDD@gmail.com','4321','ownerD','DDDDDD','1111','Dstore',NULL),(11,'qwe123','光武街110巷23號1樓',NULL,'rainy57091224@gmail.com','0912345678',NULL,'$2a$10$qKs4OsfgAW19cLst8gHcHuCifQBsfRr0p5e0Uk/upsacvSO5/pIBG','0222522018',NULL,'ROLE_ADMIN'),(14,'ASD123','新北市新莊區中平街49號2樓','2023-08-24 00:00:00.000000','1347865v@gmail.com','0983621413','ASD123','$2a$10$WtqbO6nJpS3CC8HwVX237uoWIkn3x5jIjx2PCNXhyuXXiuzLXtDju','00000000','ASD123','ROLE_ADMIN'),(15,'ZXCVBN','新北市林口區文化一路103號1樓','2023-08-24 00:00:00.000000','craigchen510@gmail.com','0918521333','ZXCVBN','$2a$10$0dHTxpIafZuAdqSwLuSSze1jHLwZ8AhYXycaJ83e1yPBkBoRn66lO','22222222','ASD123','ROLE_ADMIN');
+INSERT INTO `storemember` VALUES (16,'qwe12301','台東蘭嶼⁣鄉椰油村298-4號','2023-08-25 00:00:00.000000','pipi870108@gmail.com','0944444444','小美','$2a$10$gEuATfuhtZ2/ANC3zu9mneNHpVV53TT7TV.8tKd55fvBGxA4a8jiO','','小琉球酒吧Bar Second','ROLE_ADMIN'),(17,'qwe12302','台東綠島鄉南寮村111號','2023-08-25 00:00:00.000000','rainy57091224@gmail.com','0955555555','林小萍','$2a$10$CcgmgrFYPYYMIaN6mflfV.hSOhhVp0ZA7x/5BLU18cxQadQoCDUta','089671029','釣漁人','ROLE_ADMIN'),(19,'qwe12304','台東縣東河鄉17號','2023-08-25 00:00:00.000000','pij2baa34kan@gmail.com','0924123413','老闆Ａ','$2a$10$TIyTgygHHL0jMArusuStoudhG00vLmxW4fEbbg6LLM2nLpqmG5Fpq','','金樽衝浪小屋 Jinzun surf house','ROLE_ADMIN'),(20,'qwe12305','屏東縣恆春鎮恆公路716-13號','2023-08-25 00:00:00.000000','craigchen510@gmail.com','0923456432','老闆Ｂ','$2a$10$R9BuJG7n/0bTFrk3KamY/.d6.Fmig0VsKGhQy5bhmqvizJbkA6iKK','','Lawa衝浪工作室','ROLE_ADMIN'),(21,'qwe12306','宜蘭縣頭城鎮烏石港路103-6號','2023-08-25 00:00:00.000000','1347865v@gmail.com','0963583953','董事長','$2a$10$skKCBzj/7EQw/XvAyE5FnuBYQbBGLILdNsKGzdR.HNV4QQ0M7zmz6','','菜鳥衝浪','ROLE_ADMIN');
 /*!40000 ALTER TABLE `storemember` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-25  9:01:19
+-- Dump completed on 2023-08-28 14:19:07

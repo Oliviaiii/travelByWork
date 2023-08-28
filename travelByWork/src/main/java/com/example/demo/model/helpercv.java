@@ -2,13 +2,11 @@ package com.example.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="helpercv")
+@Table(name = "helpercv")
 public class helpercv {
 
 	@Id
@@ -19,8 +17,9 @@ public class helpercv {
 	@Column(columnDefinition = "varchar(512)")
 	private String helpercvlink;
 	private String account;
-	
-	public helpercv() {}
+
+	public helpercv() {
+	}
 
 	public String getAccount() {
 		return account;
@@ -42,29 +41,33 @@ public class helpercv {
 	public String getHelpercvlink() {
 		return helpercvlink;
 	}
+
 	public void setHelpercvlink(String helpercvlink) {
 		this.helpercvlink = helpercvlink;
 	}
+
 	public Integer getHelpermemberid() {
 		return helpermemberid;
 	}
+
 	public void setHelpermemberid(Integer helpermemberid) {
 		this.helpermemberid = helpermemberid;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getHelperphoto() {
 		return helperphoto;
 	}
+
 	public void setHelperphoto(String helperphoto) {
 		this.helperphoto = helperphoto;
 	}
 
-
-	
-	
 }
