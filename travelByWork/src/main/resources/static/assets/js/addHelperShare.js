@@ -65,7 +65,10 @@ $(document).ready(function() {
                 detailButton.data('share', share); // 直接將整個 share 物件存儲在 data 屬性中
                 row.append($('<td>').append(detailButton));
 
-
+				 // 添加 "查看心得" 按鈕
+                var shareButton = $('<button>').addClass('shareButton').text('查看心得');
+                shareButton.data('share', share); // 直接將整個 share 物件存儲在 data 屬性中
+                row.append($('<td>').append(shareButton));
                 
 
                 shareDataBody.append(row);
@@ -88,6 +91,22 @@ $(document).ready(function() {
                 });
             });
             
+             // 使用事件代理處理動態生成的 "查看心得" 按鈕
+            $(document).on('click', '.shareButton', function() {
+                var share = $(this).data('share'); // 直接使用整個 share 物件
+                var shareContent = share.content; 
+                $('#detailDialog').html(shareContent).dialog({
+                    modal: true,
+                    title: '詳細內容',
+                    width: 500,   // 寬度為500像素
+                    height: 400,  // 高度為400像素
+                    buttons: {
+                        '關閉': function() {
+                            $(this).dialog('close');
+                        }
+                    }
+                });
+            });
 
           
 

@@ -279,10 +279,11 @@
 							document.getElementById('country').value=data.helperMember.country;
 							document.getElementById('mobile').value=data.helperMember.mobile;
 							document.getElementById('createtime').value=data.helperMember.createtime;
+
 							//心得分享用
-							document.getElementById('usernameAddForm').value=data.helpercv.username;
-							document.getElementById('memberIdAddForm').value=data.helpercv.helpermemberid;
-							document.getElementById('accountAddForm').value=data.helpercv.account;
+							document.getElementById('usernameAddForm').value=data.helperMember.username;
+							document.getElementById('memberIdAddForm').value=data.helperMember.helpermemberid;
+							document.getElementById('accountAddForm').value=data.helperMember.account;
 
 							//履歷大頭照用
 							document.getElementById('helpercvlink').value=data.helpercv.helpercvlink;
@@ -483,7 +484,7 @@
    											      	<option value="8分">8分 高度評價</option>
    											      	<option value="9分">9分 非常出色</option>
    											      	<option value="10分">10分 超出想象的優</option>
-   											      	<option value="whatthefuck">不予置評/不建議</option>
+   											      	<option value="不予置評/不建議">不予置評/不建議</option>
    											   </select>
 											</div>
 

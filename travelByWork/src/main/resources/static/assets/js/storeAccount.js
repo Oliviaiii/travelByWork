@@ -127,7 +127,7 @@ $(document).ready(function() {
                 var postJob = $(this).data('postJob'); // 直接使用整個 postJob 物件
                           
 				var callContent = "Email: " + postJob.email + "<br>" +
-                  "手機: " + postJob.phone + "<br>" +
+                  "店內電話: " + postJob.phone + "<br>" +
                   "行動電話: " + postJob.mobile + "<br>" +
                   "地址: " + postJob.address +"<br>" +
                   "如何申請比較好？: " + postJob.howtoapply;
