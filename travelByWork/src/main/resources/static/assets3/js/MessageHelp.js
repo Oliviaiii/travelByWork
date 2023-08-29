@@ -59,10 +59,10 @@ $(document).ready(function() {
                     "您所傳送的內容如下：" + replyTo.message + "（以下就是我們回信的內容）" + "<br/>";
                 var additionalTextArea = '<textarea id="additionalText" rows="4" cols="50"></textarea>';
                 Content += additionalTextArea;
-                Content += "打工換宿網誠摯感謝您，祝順心！";
+                Content += "打工換宿趣誠摯感謝您，祝順心！";
                 $('#contextDialog').html(Content).dialog({
                     modal: true,
-                    title: '詳細內容',
+                    title: '回信',
                     width: 500,
                     height: 400,
                     buttons: {
